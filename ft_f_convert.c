@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 08:57:28 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/05 15:24:36 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/05 16:29:00 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,24 @@
 
 int			ft_int(va_list *ap, char tab[8])
 {
-	int x;
-	char *str;
+	char	*str;
+	int 	i;
+	int 	minus;
 
-	x = va_arg(*ap, int);
+	str = va_arg(*ap, char *);
 	i = 0;
+	minus = 0;
 	if (tab[0] == 1)
 	{
-		x = -x;
+		minus++;
 		ft_putchar('-');
 	}
 	if (tab[1] == 1)
 		ft_putchar('+');
-	if (tab[1] == 1)
-		plus++;
+	if (tab[0] == 1)
+		ft_putchar('-');
+	if (tab[4] == 1)
+		ft_putchar(' ');
 	if (tab[5] >= 1 && tab[6] == 0)
 	{
 		if (!(str = (char*)malloc(sizeof(str) * (tab[5] + 1))))
@@ -35,17 +39,25 @@ int			ft_int(va_list *ap, char tab[8])
 		while (i < (int)(tab[5]) - 1)
 		{
 			if (tab[3] == 1)
-				str[i] = '0';
-			str[i] = ' ';
+				ft_putchar('0');
+			ft_putchar(' ');
 			i++;
 		}
-		str[i] = x + '0';
-		str[i + 1] = '\0';
 	}
 	if (tab[5] >= 1 && tab[6] >= 1)
 	{
-		if (tab[5] >= 
-	ft_putstr(str);
+		while (tab[5] - tab[6] > 0)
+		{
+			ft_putchar(' ');
+			tab[5] = tab[5] - 1;
+		}
+		while (tab[6] > 0)
+		{
+			ft_putchar('0');
+			tab[6] = tab[6] - 1;
+		}
+	}
+	ft_putstr(&str[minus]);
 	return (0);
 }
 
