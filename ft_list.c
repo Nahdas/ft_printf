@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 08:53:24 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/05 10:46:34 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/05 14:07:31 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,9 @@ t_list_f	*ft_make_list_f(void)
 	list = head;
 	head = ft_make_maillon("i", list);
 	head->f = &ft_int;
+	list = head;
+	head = ft_make_maillon("c", list);
+	head->f = &ft_char;
+	list = head;
 	return (list);
 }
