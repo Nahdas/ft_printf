@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 08:57:28 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/05 14:06:44 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/05 15:24:36 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,37 @@
 int			ft_int(va_list *ap, char tab[8])
 {
 	int x;
+	char *str;
 
 	x = va_arg(*ap, int);
-	ft_putnbr(x);
+	i = 0;
+	if (tab[0] == 1)
+	{
+		x = -x;
+		ft_putchar('-');
+	}
+	if (tab[1] == 1)
+		ft_putchar('+');
+	if (tab[1] == 1)
+		plus++;
+	if (tab[5] >= 1 && tab[6] == 0)
+	{
+		if (!(str = (char*)malloc(sizeof(str) * (tab[5] + 1))))
+			return (0);
+		while (i < (int)(tab[5]) - 1)
+		{
+			if (tab[3] == 1)
+				str[i] = '0';
+			str[i] = ' ';
+			i++;
+		}
+		str[i] = x + '0';
+		str[i + 1] = '\0';
+	}
+	if (tab[5] >= 1 && tab[6] >= 1)
+	{
+		if (tab[5] >= 
+	ft_putstr(str);
 	return (0);
 }
 
