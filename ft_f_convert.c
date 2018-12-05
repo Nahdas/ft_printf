@@ -6,17 +6,35 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 08:57:28 by lmariott          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/12/05 17:08:44 by alac             ###   ########.fr       */
+=======
+<<<<<<< HEAD
+/*   Updated: 2018/12/05 14:51:55 by lmariott         ###   ########.fr       */
+=======
+/*   Updated: 2018/12/05 16:29:00 by alac             ###   ########.fr       */
+>>>>>>> c4a55039b69742fc50c9e16e93cfcf6f7e6a2817
+>>>>>>> 855be88cb2fe82b3538ffdf4c3ea4eec6f23b253
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_int(va_list *ap, char tab[8])
+int			ft_int(va_list *ap, char *tab)
 {
 	int 	x;
 
+<<<<<<< HEAD
 	x = va_arg(*ap, long long);
+=======
+<<<<<<< HEAD
+	if (!tab)
+		return (0);
+	x = va_arg(*ap, int);
+	ft_putnbr(x);
+=======
+	str = va_arg(*ap, char *);
+>>>>>>> 855be88cb2fe82b3538ffdf4c3ea4eec6f23b253
 	i = 0;
 	if (tab[0] == 1)
 	{
@@ -54,29 +72,38 @@ int			ft_int(va_list *ap, char tab[8])
 			tab[6] = tab[6] - 1;
 		}
 	}
+<<<<<<< HEAD
 	ft_put_ll(x);
+=======
+	ft_putstr(&str[minus]);
+>>>>>>> c4a55039b69742fc50c9e16e93cfcf6f7e6a2817
+>>>>>>> 855be88cb2fe82b3538ffdf4c3ea4eec6f23b253
 	return (0);
 }
 
-int			ft_char_star(va_list *ap)
+int			ft_char_star(va_list *ap, char *tab)
 {
 	char *s;
 
+	if (!tab)
+		return (0);
 	s = va_arg(*ap, char *);
 	ft_putstr(s);
 	return (0);
 }
 
-int			ft_unsigned_int_o(va_list *ap)
+int			ft_unsigned_int_o(va_list *ap, char *tab)
 {
 	unsigned int x;
 
+	if (!tab)
+		return (0);
 	x = va_arg(*ap, unsigned int);
 	ft_putull_base(x , 2);
 	return (0);
 }
 
-int		ft_char(va_list *ap, char tab[8])
+int		ft_char(va_list *ap, char *tab)
 {
 	char	c;
 	char	*str;
