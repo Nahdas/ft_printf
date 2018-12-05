@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:52:17 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/05 14:00:49 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/05 15:14:32 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char		*ft_creat_tab(void)
 	char *tab;
 	int i;
 
-	if (!(tab = (int*)malloc(sizeof(int) * 8)))
+	if (!(tab = (char *)malloc(sizeof(char) * 8)))
 		return (0);
 	i = 0;
 	ft_bzero(tab, 8);
@@ -46,6 +46,7 @@ int			ft_printf(const char *format, ...)
 		head = list;
 		if (format[i] == '%')
 		{
+			i++;
 			i = ft_capture_the_flag(&tab, format, i);
 			while (head && !ft_strcmp_modif(&format[i], head->s))
 				head = head->next;
@@ -61,6 +62,6 @@ int			ft_printf(const char *format, ...)
 
 int		main()
 {
-	ft_printf("int = %d\nstring = %s\noctal = %o\n", 42, "BONJOUR", (unsigned int)42000);
+	ft_printf("int = %s\nstring = %s\n", "BONJOUR", "OK");
 	return (0);
 }

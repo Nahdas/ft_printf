@@ -6,13 +6,13 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 13:29:20 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/05 14:02:27 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/05 15:14:19 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int			ft_first_flag(char **tab, char *format, int i)
+static int			ft_first_flag(char **tab, const char *format, int i)
 {
 	while (format[i] &&
 			(format[i] == '#' ||
@@ -36,13 +36,17 @@ static int			ft_first_flag(char **tab, char *format, int i)
 	return (i);
 }
 
-static int			ft_second_flag(char **tab, char *format, int i)
+static int			ft_second_flag(char **tab, const char *format, int i)
 {
-	int j;
+	int		j;
+	char	*nb;
+	char	s[1000];
 
 	j = 0;
+	if (format[i] != '.' && format[i] > '9' && format[i] < '0')
+		return (i);
 	while(format[i] == '.' ||
-			(format[i] >= '0' && format[i] >= '9'))
+			(format[i] >= '0' && format[i] <= '9'))
 	{
 		if (format[i] == '.')
 		{
@@ -51,7 +55,7 @@ static int			ft_second_flag(char **tab, char *format, int i)
 			j = 0;
 			i++;
 		}
-		format[i] = s[j];
+		s[j] = format[i];
 		i++;
 		j++;
 	}
@@ -63,7 +67,7 @@ static int			ft_second_flag(char **tab, char *format, int i)
 	return (i);
 }
 
-static int			ft_third_flag(char **tab, char *format, int i)
+static int			ft_third_flag(char **tab, const char *format, int i)
 {
 	if (format[i] == 'h')
 	{
@@ -88,10 +92,10 @@ static int			ft_third_flag(char **tab, char *format, int i)
 		tab[7]++;
 		i++;
 	}
-	return (i)
+	return (i);
 }
 
-int					ft_capture_the_flag(char **tab, char *format, int i)
+int					ft_capture_the_flag(char **tab, const char *format, int i)
 {
 	i = ft_first_flag(tab, format, i);
 	i = ft_second_flag(tab, format, i);
