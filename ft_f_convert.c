@@ -6,40 +6,46 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 08:57:28 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/05 14:06:44 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/05 14:51:55 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_int(va_list *ap, char tab[8])
+int			ft_int(va_list *ap, char *tab)
 {
 	int x;
 
+	if (!tab)
+		return (0);
 	x = va_arg(*ap, int);
 	ft_putnbr(x);
 	return (0);
 }
 
-int			ft_char_star(va_list *ap)
+int			ft_char_star(va_list *ap, char *tab)
 {
 	char *s;
 
+	if (!tab)
+		return (0);
 	s = va_arg(*ap, char *);
 	ft_putstr(s);
 	return (0);
 }
 
-int			ft_unsigned_int_o(va_list *ap)
+int			ft_unsigned_int_o(va_list *ap, char *tab)
 {
 	unsigned int x;
 
+	if (!tab)
+		return (0);
 	x = va_arg(*ap, unsigned int);
 	ft_putull_base(x , 2);
 	return (0);
 }
 
-int		ft_char(va_list *ap, char tab[8])
+int		ft_char(va_list *ap, char *tab)
 {
 	char	c;
 	char	*str;

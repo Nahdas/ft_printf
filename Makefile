@@ -6,21 +6,20 @@
 #    By: lmariott <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/26 11:49:47 by lmariott          #+#    #+#              #
-#    Updated: 2018/12/05 11:10:06 by alac             ###   ########.fr        #
+#    Updated: 2018/12/05 14:14:58 by lmariott         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_printf
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I./libft/
-SRC = ft_read.c\
-	  test_input.c\
-  	  main.c\
-	  ft_put_tetri.c\
-	  map_generator.c\
-	  ft_split_nn.c\
-	  ft_letters.c\
-	  ft_backtracking.c
+SRC = ft_printf.c\
+	  ft_list.c\
+  	  ft_capture_the_flag.c\
+	  ft_f_convert.c\
+	  ft_put_base.c\
+	  ft_strcmp_modif.c
+
 OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
