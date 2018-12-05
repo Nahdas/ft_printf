@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 15:37:10 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/05 09:03:30 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/05 13:28:27 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 # include <unistd.h>
 # include <stdarg.h>
+# include <stdio.h>
 # include "libft/libft.h"
 
-
+int								ft_char(va_list *ap);
 int								ft_int(va_list *ap);
 int								ft_char_star(va_list *ap);
 
