@@ -6,7 +6,7 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 11:07:56 by alac              #+#    #+#             */
-/*   Updated: 2018/12/06 13:50:51 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/06 14:42:15 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		ft_precision(long long x, char *tab)
 			i++;
 		}
 	}
-	if (tab[5] >= ft_nbrlen_base(x, 10) && tab[6] >= ft_nbrlen_base(x, 10))
+	if (tab[6] >= ft_nbrlen_base(x, 10))
 	{
 		while (tab[5] - tab[6] > 0)
 		{
