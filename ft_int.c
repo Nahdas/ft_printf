@@ -6,11 +6,11 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 11:07:56 by alac              #+#    #+#             */
-/*   Updated: 2018/12/06 11:25:27 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/06 13:50:51 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_print.h"
+#include "ft_printf.h"
 
 int		ft_precision(long long x, char *tab)
 {
@@ -27,7 +27,7 @@ int		ft_precision(long long x, char *tab)
 			i++;
 		}
 	}
-	if (tab[5] >= ft_nbrlen_base(x, 10) &&tab[6] >= ft_nbrlen_base(x, 10))
+	if (tab[5] >= ft_nbrlen_base(x, 10) && tab[6] >= ft_nbrlen_base(x, 10))
 	{
 		while (tab[5] - tab[6] > 0)
 		{
@@ -40,6 +40,7 @@ int		ft_precision(long long x, char *tab)
 			tab[6] = tab[6] - 1;
 		}
 	}
+	return (0);
 }
 
 int		ft_preceding_char(char *tab)
@@ -55,7 +56,6 @@ int		ft_preceding_char(char *tab)
 
 int		ft_int(va_list *ap, char *tab)
 {
-	int 		i;
 	long long 	x;
 
 	if (!tab)
