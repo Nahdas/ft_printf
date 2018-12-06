@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 15:37:10 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/05 14:46:07 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/06 10:52:00 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,7 @@ typedef		struct s_list_f		t_list_f;
 
 t_list_f						*ft_make_maillon(char *s, t_list_f *list);
 t_list_f						*ft_make_list_f(void);
+int								ft_nbrlen_base(long long nb, long long base);
+int								ft_unbrlen_base(unsigned long long nb, unsigned long long base);
 
 #endif

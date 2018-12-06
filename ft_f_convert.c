@@ -6,15 +6,9 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 08:57:28 by lmariott          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/12/05 17:08:44 by alac             ###   ########.fr       */
-=======
-<<<<<<< HEAD
+/*   Updated: 2018/12/06 10:56:27 by alac             ###   ########.fr       */
 /*   Updated: 2018/12/05 14:51:55 by lmariott         ###   ########.fr       */
-=======
 /*   Updated: 2018/12/05 16:29:00 by alac             ###   ########.fr       */
->>>>>>> c4a55039b69742fc50c9e16e93cfcf6f7e6a2817
->>>>>>> 855be88cb2fe82b3538ffdf4c3ea4eec6f23b253
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +16,13 @@
 
 int			ft_int(va_list *ap, char *tab)
 {
-	int 	x;
+	int 	i;
+	long long x;
 
-<<<<<<< HEAD
+	dprintf(2, "ft_int debut\n");
 	x = va_arg(*ap, long long);
-=======
-<<<<<<< HEAD
 	if (!tab)
 		return (0);
-	x = va_arg(*ap, int);
-	ft_putnbr(x);
-=======
-	str = va_arg(*ap, char *);
->>>>>>> 855be88cb2fe82b3538ffdf4c3ea4eec6f23b253
 	i = 0;
 	if (tab[0] == 1)
 	{
@@ -47,11 +35,9 @@ int			ft_int(va_list *ap, char *tab)
 		ft_putchar('-');
 	if (tab[4] == 1)
 		ft_putchar(' ');
-	if (tab[5] >= ft_nbr_len(x, 10) && tab[6] == 0)
+	if (tab[5] >= ft_nbrlen_base(x, 10) && tab[6] == 0)
 	{
-		if (!(str = (char*)malloc(sizeof(str) * tab[5])))
-			return (0);
-		while (i < (int)tab[5] - ft_nbr_len(x, 10))
+		while (i < (int)tab[5] - ft_nbrlen_base(x, 10))
 		{
 			if (tab[3] == 1)
 				ft_putchar('0');
@@ -59,25 +45,20 @@ int			ft_int(va_list *ap, char *tab)
 			i++;
 		}
 	}
-	if (tab[5] >= ft_nbr_len(x, 10) && tab[6] >= ft_nbr_len(x, 10))
+	if (tab[5] >= ft_nbrlen_base(x, 10) && tab[6] >= ft_nbrlen_base(x, 10))
 	{
 		while (tab[5] - tab[6] > 0)
 		{
 			ft_putchar(' ');
 			tab[5] = tab[5] - 1;
 		}
-		while (tab[6] > ft_nbr_len(x, 10))
+		while (tab[6] > ft_nbrlen_base(x, 10))
 		{
 			ft_putchar('0');
 			tab[6] = tab[6] - 1;
 		}
 	}
-<<<<<<< HEAD
-	ft_put_ll(x);
-=======
-	ft_putstr(&str[minus]);
->>>>>>> c4a55039b69742fc50c9e16e93cfcf6f7e6a2817
->>>>>>> 855be88cb2fe82b3538ffdf4c3ea4eec6f23b253
+	ft_putll_base(x, 10);
 	return (0);
 }
 

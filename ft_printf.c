@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:52:17 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/05 15:14:32 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/06 10:56:25 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ int			ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
+			dprintf(2, "format %c\n", format[i]);
 			i = ft_capture_the_flag(&tab, format, i);
+			dprintf(2, "i %d\n", i);
 			while (head && !ft_strcmp_modif(&format[i], head->s))
 				head = head->next;
 			(head->f)(&ap, tab);
@@ -62,6 +64,7 @@ int			ft_printf(const char *format, ...)
 
 int		main()
 {
-	ft_printf("int = %s\nstring = %s\n", "BONJOUR", "OK");
+	printf("printf :\nint = %d\nstring = %s\n", 45678, "OK");
+	ft_printf("ft_ptrintf :\nint = %d\nstring = %s\n", 45678, "OK");
 	return (0);
 }
