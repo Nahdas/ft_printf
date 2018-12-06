@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:52:17 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/06 16:11:56 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/06 17:07:25 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int			ft_printf(const char *format, ...)
 
 int		main()
 {
-	printf("printf :\nint = %12.20dend\n", 0);
-	ft_printf("ft_ptrintf :\nint = %12.20dend\n", 0);
+	printf("printf :\nchar = %send\n", "salut les gars");
+	ft_printf("ft_ptrintf :\nchar = %send\n", "salut les gars");
 	return (0);
 }
