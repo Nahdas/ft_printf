@@ -6,14 +6,14 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 08:57:28 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/06 10:56:27 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/06 11:26:27 by alac             ###   ########.fr       */
 /*   Updated: 2018/12/05 14:51:55 by lmariott         ###   ########.fr       */
 /*   Updated: 2018/12/05 16:29:00 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+/*
 int			ft_int(va_list *ap, char *tab)
 {
 	int 	i;
@@ -61,7 +61,7 @@ int			ft_int(va_list *ap, char *tab)
 	ft_putll_base(x, 10);
 	return (0);
 }
-
+*/
 int			ft_char_star(va_list *ap, char *tab)
 {
 	char *s;
@@ -107,5 +107,3 @@ int		ft_char(va_list *ap, char *tab)
 	ft_putstr(str);
 	return (1);
 }
-
-
