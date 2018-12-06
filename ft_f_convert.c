@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 08:57:28 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/06 11:26:27 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/06 15:57:53 by alac             ###   ########.fr       */
 /*   Updated: 2018/12/05 14:51:55 by lmariott         ###   ########.fr       */
 /*   Updated: 2018/12/05 16:29:00 by alac             ###   ########.fr       */
 /*                                                                            */
@@ -72,7 +72,7 @@ int			ft_char_star(va_list *ap, char *tab)
 	ft_putstr(s);
 	return (0);
 }
-
+/*
 int			ft_unsigned_int_o(va_list *ap, char *tab)
 {
 	unsigned int x;
@@ -83,7 +83,7 @@ int			ft_unsigned_int_o(va_list *ap, char *tab)
 	ft_putull_base(x , 2);
 	return (0);
 }
-
+*/
 int		ft_char(va_list *ap, char *tab)
 {
 	char	c;

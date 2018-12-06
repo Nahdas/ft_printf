@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 13:29:20 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/06 14:33:37 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/06 16:11:51 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ int					ft_capture_the_flag(char **tab, const char *format, int i)
 	i = ft_first_flag(tab, format, i);
 	i = ft_second_flag(tab, format, i);
 	i = ft_third_flag(tab, format, i);
-	printf("tab[6] = %d\n" , (*tab)[6]);
+	if ((*tab)[6] == 0)
+		(*tab)[6] = -1;
 	return (i);
 }

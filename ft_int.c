@@ -6,7 +6,7 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 11:07:56 by alac              #+#    #+#             */
-/*   Updated: 2018/12/06 15:52:50 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/06 16:11:49 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,10 @@ int		ft_int(va_list *ap, char *tab)
 	int i;
 
 	i = 0;
+	if (tab[6] == 0)
+		return (0);
+	if (tab[6] == -1)
+		tab[6] = 1;
 	if (!tab)
 		return (0);
 	x = va_arg(*ap, long long);
