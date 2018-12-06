@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 13:29:20 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/06 13:45:00 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/06 14:33:37 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,26 @@ static int			ft_first_flag(char **tab, const char *format, int i)
 static int			ft_second_flag(char **tab, const char *format, int i)
 {
 	int		j;
+	int		b;
 	char	*nb;
 	char	s[1000];
 
 	j = 0;
+	b = 0;
 	ft_bzero(s, 1000);
 	if (format[i] != '.' && (format[i] > '9' || format[i] < '0'))
 		return (i);
 	while(format[i] == '.' ||
 			(format[i] >= '0' && format[i] <= '9'))
 	{
-		if (format[i] == '.')
+		if (format[i] == '.' && s[0] == 0)
 		{
-			if (s[0] != 0)
-				nb = ft_strdup(s);
+			i++;
+			b = 1;
+		}
+		if (format[i] == '.' && s[0] != '\0')
+		{
+			nb = ft_strdup(s);
 			(*tab)[5] = ft_atoi(nb);
 			ft_bzero(s, 1000);
 			j = 0;
@@ -63,7 +69,7 @@ static int			ft_second_flag(char **tab, const char *format, int i)
 		j++;
 	}
 	nb = ft_strdup(s);
-	if ((*tab)[5] != 0)
+	if (b == 1 || (*tab)[5] != 0)
 		(*tab)[6] = ft_atoi(nb);
 	else
 		(*tab)[5] = ft_atoi(nb);
@@ -104,5 +110,6 @@ int					ft_capture_the_flag(char **tab, const char *format, int i)
 	i = ft_first_flag(tab, format, i);
 	i = ft_second_flag(tab, format, i);
 	i = ft_third_flag(tab, format, i);
+	printf("tab[6] = %d\n" , (*tab)[6]);
 	return (i);
 }
