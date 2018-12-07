@@ -6,13 +6,13 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 11:07:56 by alac              #+#    #+#             */
-/*   Updated: 2018/12/07 13:22:12 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/07 14:57:18 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_size(long long x, char *tab)
+static int		ft_size(long long x, char *tab)
 {
 	int i;
 
@@ -38,7 +38,8 @@ int		ft_size(long long x, char *tab)
 	}
 	return (0);
 }
-int		ft_precision(long long x, char *tab)
+
+static int		ft_precision(long long x, char *tab)
 {
 	int mem;
 	mem = tab[6];
@@ -51,9 +52,8 @@ int		ft_precision(long long x, char *tab)
 	return (0);
 }
 
-int		ft_preceding_char(char *tab, long long x)
+static int		ft_preceding_char(char *tab, long long x)
 {
-
 	if (tab[1] == 1)
 	{
 		ft_putchar('+');
