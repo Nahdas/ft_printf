@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 13:29:20 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/06 16:11:51 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/07 09:39:15 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ static int			ft_second_flag(char **tab, const char *format, int i)
 			ft_bzero(s, 1000);
 			j = 0;
 			i++;
+			if (format[i] != '.' && (format[i] > '9' || format[i] < '0'))
+				return (i);
 		}
 		s[j] = format[i];
 		i++;
