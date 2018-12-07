@@ -6,7 +6,7 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 11:04:02 by alac              #+#    #+#             */
-/*   Updated: 2018/12/07 14:57:15 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/07 15:27:38 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int				ft_p_address(va_list *ap, char *tab)
 		ft_putstr("0x");
 		ft_putull_base_min((unsigned long long)x, 16);
 	}
-	if ((int)ft_nbrlen_base((long long)x, 10) > (int)tab[5])
-		return ((int)ft_nbrlen_base((long long)x, 10)); 
-	return  ((int)tab[5]);
+	if ((int)ft_nbrlen_base((long long)x, 10) > (int)tab[5] && (int)ft_nbrlen_base((long long)x, 10) > (int)tab[5])
+		return ((int)ft_nbrlen_base((long long)x, 10) - 1); 
+	return ((int)tab[5]);
 }
