@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:31:36 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/07 13:55:07 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/07 14:54:55 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int			ft_unsigned_int_x_min(va_list *ap, char *tab)
 	if (len > tab[5] && len > tab[6])
 		ret = len;
 	if (tab[5] > len && tab[5] > tab[6])
-		ret = tab[5];
+		ret = (int)tab[5];
 	if (tab[6] > len && tab[6] > tab[5])
-		ret = tab[6];
+		ret = (int)tab[6];
 	if (tab[6] == -1)
 		tab[6] = 1;
 	while (tab[5] > tab[6] && tab[5] > len && tab[0] != 1)
@@ -53,5 +53,5 @@ int			ft_unsigned_int_x_min(va_list *ap, char *tab)
 			write(1, " ", 1);
 		}
 	}
-	return (0);
+	return (ret);
 }
