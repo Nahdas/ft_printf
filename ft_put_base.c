@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:51:46 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/07 11:27:05 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/07 14:11:13 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void			ft_putull_base_min(unsigned long long nb, unsigned long long base)
 		write(1 , &(bazz[nb]), 1);
 	if (nb >= base)
 	{
-		ft_putull_base(nb / base, base);
+		ft_putull_base_min(nb / base, base);
 		write(1 , &(bazz[nb % base]), 1);
 	}
 	free(bazz);
