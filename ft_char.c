@@ -6,7 +6,7 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 16:16:22 by alac              #+#    #+#             */
-/*   Updated: 2018/12/06 16:39:52 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/07 13:57:51 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 int		ft_char(va_list *ap, char *tab)
 {
-	char c;
+	char	c;
+	int		ret;
 
+	ret = 1;
+	if(tab[5] != 0)
+		ret = tab[5];
 	c = (char)va_arg(*ap, int);
 	while (tab[5] > 1)
 	{
@@ -23,5 +27,5 @@ int		ft_char(va_list *ap, char *tab)
 		tab[5]--;
 	}
 	ft_putchar(c);
-	return (1);
+	return (ret);
 }

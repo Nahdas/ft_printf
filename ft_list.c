@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 08:53:24 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/07 11:15:21 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/07 13:12:13 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,18 @@ t_list_f	*ft_make_list_f(void)
 	head = ft_make_maillon("p", list);
 	head->f = &ft_p_address;
 	list = head;
+	head = ft_make_maillon("o", list);
+	head->f = &ft_unsigned_int_o;
+	list = head;
+	head = ft_make_maillon("u", list);
+	head->f = &ft_unsigned_int_u;
+	list = head;
+	head = ft_make_maillon("x", list);
+	head->f = &ft_unsigned_int_x_min;
+	list = head;
+	head = ft_make_maillon("X", list);
+	head->f = &ft_unsigned_int_x_maj;
+	list = head;
+
 	return (list);
 }

@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:52:17 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/06 17:07:25 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/07 13:47:32 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int			ft_printf(const char *format, ...)
 	t_list_f	*list;
 	t_list_f	*head;
 	int			i;
+	int			j;
 
 	i = 0;
 	list = NULL;
@@ -40,6 +41,7 @@ int			ft_printf(const char *format, ...)
 	va_start(ap, format);
 	list = ft_make_list_f();
 	tab = ft_creat_tab();
+	j = 0;
 	if (!(head = (t_list_f*)malloc(sizeof(t_list_f))))
 		return (0);
 	while(format[i])
@@ -51,7 +53,7 @@ int			ft_printf(const char *format, ...)
 			i = ft_capture_the_flag(&tab, format, i);
 			while (head && !ft_strcmp_modif(&format[i], head->s))
 				head = head->next;
-			(head->f)(&ap, tab);
+			j += (head->f)(&ap, tab);
 			i++;
 		}
 		ft_bzero(tab, 8);
@@ -61,9 +63,8 @@ int			ft_printf(const char *format, ...)
 	return (0);
 }
 
-int		main()
+int	main()
 {
-	printf("printf :\nchar = %send\n", "salut les gars");
-	ft_printf("ft_ptrintf :\nchar = %send\n", "salut les gars");
+	ft_printf("%s", "Bonjour");
 	return (0);
 }

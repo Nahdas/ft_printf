@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 15:37:10 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/06 10:52:00 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/07 13:20:10 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@
 int								ft_char(va_list *ap, char *tab);
 int								ft_int(va_list *ap, char *tab);
 int								ft_char_star(va_list *ap, char *tab);
+int								ft_unsigned_int_o(va_list *ap, char *tab);
+int								ft_unsigned_int_u(va_list *ap, char *tab);
+int								ft_unsigned_int_x_maj(va_list *ap, char *tab);
+int								ft_unsigned_int_x_min(va_list *ap, char *tab);
+int								ft_p_address(va_list *ap, char *tab);
 
 int								ft_strcmp_modif(const char *s1, const char *s2);
 int								ft_capture_the_flag(char **tab,
@@ -28,6 +33,7 @@ int								ft_capture_the_flag(char **tab,
 void							ft_putull_base(unsigned long long nb,
 		unsigned long long base);
 void							ft_putll_base(long long nb, long long base);
+void							ft_putull_base_min(unsigned long long nb, unsigned long long base);
 struct							s_list_f
 {
 	char				*s;
