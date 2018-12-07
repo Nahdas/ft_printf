@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 13:29:20 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/07 09:39:15 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/07 16:04:18 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ static int			ft_second_flag(char **tab, const char *format, int i)
 		{
 			i++;
 			b = 1;
+			if(format[i] < '0' || format[i] > '9')
+			{
+				(*tab)[6] = 0;
+				return (i);
+			}
 		}
 		if (format[i] == '.' && s[0] != '\0')
 		{
@@ -63,8 +68,11 @@ static int			ft_second_flag(char **tab, const char *format, int i)
 			ft_bzero(s, 1000);
 			j = 0;
 			i++;
-			if (format[i] != '.' && (format[i] > '9' || format[i] < '0'))
+			if (format[i] > '9' || format[i] < '0')
+			{
+				(*tab)[6] = 0;
 				return (i);
+			}
 		}
 		s[j] = format[i];
 		i++;
@@ -109,10 +117,9 @@ static int			ft_third_flag(char **tab, const char *format, int i)
 int					ft_capture_the_flag(char **tab, const char *format, int i)
 {
 	ft_bzero((*tab), 8);
+	(*tab)[6] = -1;
 	i = ft_first_flag(tab, format, i);
 	i = ft_second_flag(tab, format, i);
 	i = ft_third_flag(tab, format, i);
-	if ((*tab)[6] == 0)
-		(*tab)[6] = -1;
 	return (i);
 }

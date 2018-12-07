@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:52:17 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/07 14:57:02 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/07 16:04:58 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,7 @@ int			ft_printf(const char *format, ...)
 /*
 int		main()
 {
-	int x;
-	x = printf("%X", 42);
-	printf("%d\n", x);
-	x = ft_printf("%X", 42);
-	printf("%d\n", x);
+	ft_printf("@moulitest: %.o %.0o\n", 0, 0);
+	printf("@moulitest: %.o %.0o\n", 0, 0);
+	return (0);
 }*/
