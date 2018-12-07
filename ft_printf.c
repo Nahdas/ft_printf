@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:52:17 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/07 13:47:32 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/07 14:57:02 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,28 @@ int			ft_printf(const char *format, ...)
 		head = list;
 		if (format[i] == '%')
 		{
+			j += i;
 			i++;
 			i = ft_capture_the_flag(&tab, format, i);
+			j -= i + 1;
 			while (head && !ft_strcmp_modif(&format[i], head->s))
 				head = head->next;
 			j += (head->f)(&ap, tab);
 			i++;
 		}
 		ft_bzero(tab, 8);
-		write(1, &format[i++], 1);
+		if (format[i])
+			write(1, &format[i++], 1);
 	}
 	va_end(ap);
-	return (0);
+	return (i + j);
 }
-
-int	main()
+/*
+int		main()
 {
-	ft_printf("%s", "Bonjour");
-	return (0);
-}
+	int x;
+	x = printf("%X", 42);
+	printf("%d\n", x);
+	x = ft_printf("%X", 42);
+	printf("%d\n", x);
+}*/
