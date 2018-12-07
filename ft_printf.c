@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:52:17 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/07 16:04:58 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/07 20:29:12 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int			ft_printf(const char *format, ...)
 			j -= i + 1;
 			while (head && !ft_strcmp_modif(&format[i], head->s))
 				head = head->next;
+			if (!head)
+				return (0);
 			j += (head->f)(&ap, tab);
 			i++;
 		}
@@ -68,7 +70,7 @@ int			ft_printf(const char *format, ...)
 /*
 int		main()
 {
-	ft_printf("@moulitest: %.o %.0o\n", 0, 0);
-	printf("@moulitest: %.o %.0o\n", 0, 0);
+	ft_printf("u : %lx\n", 4294967296);
+	printf("o : %lx\n", 4294967296);
 	return (0);
 }*/

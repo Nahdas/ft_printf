@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 15:37:10 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/07 13:20:10 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/07 20:26:27 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@ int								ft_unsigned_int_u(va_list *ap, char *tab);
 int								ft_unsigned_int_x_maj(va_list *ap, char *tab);
 int								ft_unsigned_int_x_min(va_list *ap, char *tab);
 int								ft_p_address(va_list *ap, char *tab);
+int								ft_percent(va_list *ap, char *tab);
+
+
+void							ft_flag_convert(va_list *ap, char **tab, unsigned long long *x);
+void							ft_fill_precision(char **tab, int len);
+int								ft_ret(char **tab, int len);
+void							ft_fill_size_min(char **tab, int len);
+int								ft_cas_0(char *tab, unsigned long long x);
 
 int								ft_strcmp_modif(const char *s1, const char *s2);
 int								ft_capture_the_flag(char **tab,

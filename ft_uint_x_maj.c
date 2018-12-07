@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:31:36 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/07 14:44:11 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/07 19:58:33 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,34 @@
 
 int			ft_unsigned_int_x_maj(va_list *ap, char *tab)
 {
-	unsigned int	x;
-	int				len;
-	int				ret;
+	unsigned long long	x;
+	int					len;
+	int					ret;
 
-	x = va_arg(*ap, unsigned int);
+	ft_flag_convert(ap, &tab, &x);
 	len = ft_nbrlen_base(x, 16);
-	if (tab[2] == 1 && x)
+	tab[7] = tab[2];
+	tab[2] = 0;
+	ret = ft_cas_0(tab, x);
+	tab[2] = tab[7];
+	if (ret != -1)
+		return (ret);
+	if (tab[2] == 1 && x != 0)
 	{
 		len += 2;
-		write(1, "0x", 2);
+		if (tab[3] == 1)
+			write(1, "0X", 2);
 	}
-	if (tab[6] == -1)
-		tab[6] = 1;
-	if (len > tab[5] && len > tab[6])
-		ret = len;
-	if (tab[5] > len && tab[5] > tab[6])
-		ret = (int)tab[5];
-	if (tab[6] > len && tab[6] > tab[5])
-		ret = (int)tab[6];
-	while (tab[5] > tab[6] && tab[5] > len && tab[0] != 1)
-	{
-		tab[5]--;
-		write(1, " ", 1);
-	}
-	while ((tab[6] > len))
-	{
-		tab[2] = 0;
-		tab[6]--;
-		write(1, "0", 1);
-	}
+	ret = ft_ret(&tab, len);
+	ft_fill_size_min(&tab, len);
+	if (tab[2] == 1 && x != 0 && tab[3] != 1)
+		write(1, "0X", 2);
+	tab[2] = 0;
+	ft_fill_precision(&tab, len);
 	ft_putull_base(x , 16);
 	if (tab[0] == 1)
 	{
-		while (tab[5] > tab[6] && tab[5] > len)
+		while (tab[5] > tab[7] && tab[5] > len)
 		{
 			tab[5]--;
 			write(1, " ", 1);

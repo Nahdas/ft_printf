@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:51:46 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/07 14:11:13 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/07 17:03:12 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,3 @@ void			ft_putll_base(long long nb, long long base)
 	}
 	free(bazz);
 }
-

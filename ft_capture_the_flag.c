@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 13:29:20 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/07 16:04:18 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/07 17:10:41 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static int			ft_third_flag(char **tab, const char *format, int i)
 		(*tab)[7]++;
 		if (format[++i] == 'h')
 		{
-			(*tab)[7]++;
+			(*tab)[7] = 3;
 			i++;
 		}
 	}
@@ -108,7 +108,7 @@ static int			ft_third_flag(char **tab, const char *format, int i)
 	}
 	if (format[i] == 'L' && (*tab)[7] == 0)
 	{
-		(*tab)[7]++;
+		(*tab)[7] = 5;
 		i++;
 	}
 	return (i);
