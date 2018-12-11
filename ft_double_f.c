@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:59:09 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/11 19:46:12 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/11 19:58:21 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int			ft_double_f(va_list *ap, char *tab)
 		tab[6] = 6;
 	x = va_arg(*ap, double);
 	len = ft_double_len_left(x);
-	printf("len = %d\n", len);
 	tab[7] = tab[6] + len + tab[1] + tab[4] + 1;
 	tmp2 = tab[5];
 	ft_fill_size_f(&tab);

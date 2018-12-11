@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 15:37:10 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/07 20:26:27 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/11 17:29:16 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int								ft_unsigned_int_x_maj(va_list *ap, char *tab);
 int								ft_unsigned_int_x_min(va_list *ap, char *tab);
 int								ft_p_address(va_list *ap, char *tab);
 int								ft_percent(va_list *ap, char *tab);
+int								ft_double_f(va_list *ap, char *tab);
 
 
 void							ft_flag_convert(va_list *ap, char **tab, unsigned long long *x);
@@ -55,5 +56,5 @@ t_list_f						*ft_make_maillon(char *s, t_list_f *list);
 t_list_f						*ft_make_list_f(void);
 int								ft_nbrlen_base(long long nb, long long base);
 int								ft_unbrlen_base(unsigned long long nb, unsigned long long base);
-
+int								ft_double_len_left(long double x);
 #endif

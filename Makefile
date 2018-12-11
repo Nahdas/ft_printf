@@ -6,7 +6,7 @@
 #    By: lmariott <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/26 11:49:47 by lmariott          #+#    #+#              #
-#    Updated: 2018/12/07 20:26:41 by lmariott         ###   ########.fr        #
+#    Updated: 2018/12/11 17:26:01 by lmariott         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ SRC = ft_printf.c\
 	  ft_char_star.c\
 	  ft_nbrlen_base.c\
 	  ft_help.c\
-	  ft_percent.c
+	  ft_percent.c\
+	  ft_double_f.c
 OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
