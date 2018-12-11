@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:37:40 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/06 10:51:44 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/11 19:43:01 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,27 @@ int				ft_nbrlen_base(long long nb, long long base)
 		i *= base;
 	}
 	return ((int)j);
+}
+
+int			ft_double_len_left(long double nb)
+{
+	long double		i;
+	int				j;
+
+	j = 0;
+	i = 1;
+	if (nb > -10 && nb < 10)
+		return (1);
+	if (nb < 0)
+	{
+		nb = -nb;
+		nb /= 10;
+		j += 2;
+	}
+	while (i <= nb)
+	{
+		j++;
+		i *= 10;
+	}
+	return (j);
 }

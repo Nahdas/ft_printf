@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 08:53:24 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/07 20:25:59 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/11 17:25:21 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ t_list_f	*ft_make_list_f(void)
 	list = head;
 	head = ft_make_maillon("%", list);
 	head->f = &ft_percent;
+	list = head;
+	head = ft_make_maillon("f", list);
+	head->f = &ft_double_f;
 	list = head;
 
 	return (list);
