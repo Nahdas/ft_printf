@@ -6,7 +6,12 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 15:37:10 by lmariott          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/12/11 20:19:48 by alac             ###   ########.fr       */
+=======
+/*   Updated: 2018/12/11 19:59:28 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/11 15:38:26 by alac             ###   ########.fr       */
+>>>>>>> f0daf7ca900724eb521b1c4c0d891258b1b21c54
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +35,7 @@ int								ft_unsigned_int_x_maj(va_list *ap, char *tab);
 int								ft_unsigned_int_x_min(va_list *ap, char *tab);
 int								ft_p_address(va_list *ap, char *tab);
 int								ft_percent(va_list *ap, char *tab);
+int								ft_double_f(va_list *ap, char *tab);
 
 
 void							ft_flag_convert(va_list *ap, char **tab, unsigned long long *x);
@@ -58,6 +64,7 @@ t_list_f						*ft_make_maillon(char *s, t_list_f *list);
 t_list_f						*ft_make_list_f(void);
 int								ft_nbrlen_base(long long nb, long long base);
 int								ft_unbrlen_base(unsigned long long nb, unsigned long long base);
+int								ft_double_len_left(long double x);
 void							ft_flag_convert_int(va_list *ap, char **tab, long long *x);
 
 #endif

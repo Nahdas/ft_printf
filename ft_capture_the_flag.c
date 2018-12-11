@@ -6,11 +6,12 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 13:29:20 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/07 17:10:41 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/11 15:54:59 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 static int			ft_first_flag(char **tab, const char *format, int i)
 {
