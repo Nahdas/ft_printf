@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:52:17 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/07 20:29:12 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/11 13:32:28 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int			ft_printf(const char *format, ...)
 	j = 0;
 	if (!(head = (t_list_f*)malloc(sizeof(t_list_f))))
 		return (0);
-	while(format[i])
+	while (format[i])
 	{
 		head = list;
 		if (format[i] == '%')
@@ -61,7 +61,7 @@ int			ft_printf(const char *format, ...)
 			i++;
 		}
 		ft_bzero(tab, 8);
-		if (format[i])
+		if (format[i] && format[i] != '%')
 			write(1, &format[i++], 1);
 	}
 	va_end(ap);
@@ -70,7 +70,14 @@ int			ft_printf(const char *format, ...)
 /*
 int		main()
 {
-	ft_printf("u : %lx\n", 4294967296);
-	printf("o : %lx\n", 4294967296);
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+
+	i = ft_printf("%-5c\n", 42);
+	j = printf("%-5c\n", 42);
+	printf("i :%d j :%d\n", i, j);
 	return (0);
 }*/

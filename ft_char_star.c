@@ -6,7 +6,7 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 16:40:14 by alac              #+#    #+#             */
-/*   Updated: 2018/12/07 19:16:57 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/11 13:27:00 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ int		ft_char_star(va_list *ap, char *tab)
 	s = va_arg(*ap, char *);
 	if (!s)
 	{
-		write(1, "\0", 1);
-		return (0);
+		ft_putstr("(null)");
+		return (6);
 	}
 	i = ft_pre_char(s, tab);
 	ft_size(s, tab);
