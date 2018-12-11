@@ -6,7 +6,7 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 11:07:56 by alac              #+#    #+#             */
-/*   Updated: 2018/12/07 17:25:35 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/11 16:57:20 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,12 @@ static int		ft_size(long long x, char *tab)
 	return (0);
 }
 
-static int		ft_precision(long long x, char *tab)
+static int		ft_precision(long long *x, char *tab)
 {
 	int mem;
+
 	mem = tab[6];
-	while (tab[6] > ft_nbrlen_base(x, 10))
+	while (tab[6] > ft_nbrlen_base(*x, 10))
 	{
 		ft_putchar('0');
 		tab[6] = tab[6] - 1;
@@ -60,24 +61,24 @@ static int		ft_preceding_char(char *tab, long long x)
 	int i;
 
 	i = 0;
-	if (tab[1] == 1)
+	if (tab[1] == 1 && x >= 0)
 	{
 		tab[5]--;
 		return (1);
 	}
-	if (tab[4] == 1 && tab[1] != 1)
+	if (tab[4] == 1 && tab[1] != 1 && x >= 0)
 	{
 		tab[5]--;
 		ft_putchar(' ');
-		i += 1;
+		i = i + 1;
 	}
 	if (tab[0] == 1)
 	{
-		ft_precision(x, tab);
+		ft_precision(&x, tab);
 		ft_putll_base(x, 10);
 		return (-i);
 	}
-	return (0);
+	return (i);
 }
 
 int		ft_int(va_list *ap, char *tab)
@@ -86,21 +87,23 @@ int		ft_int(va_list *ap, char *tab)
 	int i;
 
 	i = 0;
-	if (tab[6] == 0)
+	if (tab[6] == 0 || !tab)
 		return (0);
-	if (tab[6] == -1)
-		tab[6] = 1;
-	if (!tab)
-		return (0);
-	x = va_arg(*ap, long long);
-	i = ft_preceding_char(tab, x);
-	ft_size(x, tab);
-	if (tab[1] == 1)
+	ft_flag_convert_int(ap, &tab, &x);
+	if (tab[1] == 1 && x >= 0)
 		ft_putchar('+');
+	if (x < 0)
+	{
+		ft_putchar('-');
+		x = -x;
+	}
+	i = ft_preceding_char(tab, (long long)x);
+	ft_size((long long)x, tab);
 	if (i >= 0)
 	{
-		ft_precision(x, tab);
-		ft_putll_base(x, 10);
+		x = (long long)x;
+		ft_precision(&x, tab);
+		ft_putll_base((long long)x, 10);
 	}
 	else
 		i = -i;

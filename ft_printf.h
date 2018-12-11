@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 15:37:10 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/07 20:26:27 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/11 15:38:26 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdio.h>
+# include <limits.h>
 # include "libft/libft.h"
 
 int								ft_char(va_list *ap, char *tab);
@@ -55,5 +56,6 @@ t_list_f						*ft_make_maillon(char *s, t_list_f *list);
 t_list_f						*ft_make_list_f(void);
 int								ft_nbrlen_base(long long nb, long long base);
 int								ft_unbrlen_base(unsigned long long nb, unsigned long long base);
+void							ft_flag_convert_int(va_list *ap, char **tab, long long *x);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:52:17 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/11 13:32:28 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/11 16:57:42 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,17 @@ int			ft_printf(const char *format, ...)
 	va_end(ap);
 	return (i + j);
 }
-/*
+
 int		main()
 {
 	int i;
 	int j;
 
+
 	i = 0;
 	j = 0;
-
-	i = ft_printf("%-5c\n", 42);
-	j = printf("%-5c\n", 42);
+	i = ft_printf("% 5d\n", -42);
+	j = printf("% 5d\n", -42);
 	printf("i :%d j :%d\n", i, j);
 	return (0);
-}*/
+}
