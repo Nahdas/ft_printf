@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 15:37:10 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/11 15:38:26 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/11 20:19:48 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdio.h>
 # include <limits.h>
 # include "libft/libft.h"
+
+# define ABS(Value) ((Value) < 0) ? (-Value) : (Value)
 
 int								ft_char(va_list *ap, char *tab);
 int								ft_int(va_list *ap, char *tab);
