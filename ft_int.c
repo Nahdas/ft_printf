@@ -1,146 +1,128 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_int.c                                           :+:      :+:    :+:   */
+/*   ft_int_new.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/06 11:07:56 by alac              #+#    #+#             */
-/*   Updated: 2018/12/11 21:49:54 by alac             ###   ########.fr       */
+/*   Created: 2018/12/12 09:22:43 by alac              #+#    #+#             */
+/*   Updated: 2018/12/12 12:02:38 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		ft_size(long long x, char *tab, int *neg)
+static int			ft_size_int(long long x, char *tab, int len, char *sign)
 {
 	int i;
-	int mem;
-	long long y;
 
 	i = 0;
-	if (x < 0)
-		y = -x;
-	if (tab[5] >= ft_nbrlen_base(y, 10) && tab[5] >= tab[6])
+	if (tab[3] == 1 && tab[6] == -1 && i == 0 && (*sign) != 0) 
 	{
-		while (i < tab[5] - ft_nbrlen_base(y, 10) && i < tab[5] - tab[6])
+		ft_putchar((*sign));
+		(*sign) = 0;
+	}
+	if (tab[5] > len && tab[5] > tab[6])
+	{
+		while (i < tab[5] - len && i < tab[5] - tab[6])
 		{
 			if (tab[3] == 1)
-			{
-				if ((*neg) == 0 && i == 0 && x < 0)
-				{
-					(*neg) = (*neg) + 1;
-					ft_putchar('-');
-					x = -x;
-					}
-				if ((*neg) == -1 && i == 0 && x >= 0)
-				{
-					ft_putchar('+');
-					(*neg) = (*neg) - 2;
-				}
 				ft_putchar('0');
-			}
-			else
-			{
-				if (x < 0)
-					i++;
+			if (tab[3] != 1)
 				ft_putchar(' ');
-			}
 			i++;
 		}
 	}
-	mem = tab[5];
-	if (tab[6] >= ft_nbrlen_base(x, 10) && tab[6] > tab[5])
-	{
-		while (tab[5] - tab[6] > 0)
-		{
-			ft_putchar(' ');
-			tab[5] = tab[5] - 1;
-		}
-	}
-	tab[5] = mem;
 	return (0);
 }
 
-static int		ft_precision(long long x, char *tab, int *neg)
+static int			ft_precision_int(long long x, char *tab, int len, char *sign)
 {
-	int mem;
+	int i;
 
-	mem = tab[6];
-	if ((*neg) == 0 && x < 0)
+	i = 0;
+	if (((*sign) == '+' || (*sign) == '-') && (tab[6] != -1 || tab[3] != 1))
 	{
-		ft_putchar('-');
-		(*neg) = 1;
-		x = -x;
+		ft_putchar(*sign);
+		(*sign) = 0;
 	}
-	if (tab[1] == 1 && x >= 0 && (*neg) == -1)
-	{
-		ft_putchar('+');
-		(*neg) = -2;
-	}
-	while (tab[6] > ft_nbrlen_base(x, 10))
+	while (i < tab[6] - ft_nbrlen_base(x, 10))
 	{
 		ft_putchar('0');
-		tab[6] = tab[6] - 1;
+		i++;
 	}
-	tab[6] = mem;
+	i = len;
 	return (0);
 }
 
-static int		ft_preceding_char(char *tab, long long x, int *neg)
+static int            ft_negative_int(char **tab, long long x, char *sign)
 {
-	int i;
+	int len;
 
-	i = 0;
-	if (tab[1] == 1 && x >= 0)
+	len = 0; 
+	if (x < 0)
 	{
-		tab[5]--;
-		return (1);
+		(*sign) = '-';
+		x = -x;
+		len = ft_nbrlen_base(x, 10) + 1;
+		if ((*tab)[0] == 1)
+		{
+			ft_precision_int(x, *tab, len, sign);
+			ft_putll_base(x, 10);
+		}
 	}
-	if (tab[4] == 1 && tab[1] != 1 && x >= 0)
-	{
-		tab[5]--;
-		ft_putchar(' ');
-	}
-	if (tab[0] == 1)
-	{
-		ft_precision(x, tab, neg);
-		if (x < 0)
-			x = -x;
-		ft_putll_base(x, 10);
-		return (-1);
-	}
-	return (0);
+	//	printf("len : %d sign :%c\n", len, (*sign));
+	return (len);
 }
 
-int		ft_int(va_list *ap, char *tab)
+static int            ft_positive_int(char **tab, long long x, char *sign, int *count, int *len)
+{
+	if (x >= 0)
+	{
+		(*len) = ft_nbrlen_base(x, 10);
+		if ((*tab)[1] == 1 && x >= 0)
+		{
+			(*len)++;
+			*sign = '+';
+		}
+		if ((*tab)[4] == 1 && (*tab)[1] != 1 && x >= 0 && ((*tab)[5] <= (*tab)[6] || (*tab)[5] <= (*len)))
+		{
+			ft_putchar(' ');
+			(*count)++;
+		}
+		if ((*tab)[0] == 1)
+		{
+			ft_precision_int(x, *tab, (*len), sign);
+			ft_putll_base(x, 10);
+		}
+	}
+	return ((*len));
+}
+
+int				ft_int(va_list *ap, char *tab)
 {
 	long long 	x;
-	int i;
-	int neg;
+	int 		i;
+	int len;
+	char sign;
+	int count;
 
-	neg = 0;
-
+	len = 0;
 	i = 0;
+	sign = 0;
+	count = 0;
 	if (tab[6] == 0 || !tab)
 		return (0);
 	ft_flag_convert_int(ap, &tab, &x);
-	if (tab[1] == 1 && x >= 0)
-		neg = -1;
-	i = ft_preceding_char(tab, (long long)x, &neg);
-	ft_size((long long)x, tab, &neg);
-	if (i >= 0)
+	len = ft_negative_int(&tab, (long long)x, &sign);
+	len = ft_positive_int(&tab, (long long)x, &sign, &count, &len);
+	if (x < 0)
+		x = -x;
+	ft_size_int((long long)x, tab, len, &sign);
+	if (tab[0] != 1)
 	{
-		ft_precision((long long)x, tab, &neg);
-		if (x < 0)
-			x = -x;
-		ft_putll_base((long long)x, 10);
+		ft_precision_int((long long)x, tab, len, &sign);
+		ft_putll_base(x, 10);
 	}
-	else
-		i = 0;
-	if ((int)ft_nbrlen_base((long long)x, 10) > (int)tab[5] && (int)ft_nbrlen_base((long long)x, 10) > (int)tab[6])
-		return (i + (int)ft_nbrlen_base((long long)x, 10));
-	if ((int)tab[5] > (int)ft_nbrlen_base((long long)x, 10) && (int)tab[5] >= (int)tab[6])
-		return (i + (int)tab[5]);
-	return (i + (int)tab[6]);
+	return (ft_return_int((long long)x, tab, len, count));
 }
