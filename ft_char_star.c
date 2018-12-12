@@ -6,7 +6,7 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 16:40:14 by alac              #+#    #+#             */
-/*   Updated: 2018/12/12 10:56:50 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/12 14:04:54 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ static int			ft_size(char *s, char *tab)
 	{
 		while ((int)tab[5] > i + (int)ft_strlen(s) - (int)tab[6])
 		{
-			write(1, " ", 1);
+			if (tab[3] == 0)
+				write(1, " ", 1);
+			if (tab[3] == 1)
+				write(1, "0", 1);
 			i++;
 		}
 		return (0);

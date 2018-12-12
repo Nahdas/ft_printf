@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 15:37:10 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/12 11:35:43 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/12 13:08:51 by lmariott         ###   ########.fr       */
 /*   Updated: 2018/12/11 19:59:28 by lmariott         ###   ########.fr       */
 /*   Updated: 2018/12/11 15:38:26 by alac             ###   ########.fr       */
 /*                                                                            */
@@ -36,7 +36,8 @@ int								ft_double_f(va_list *ap, char *tab);
 
 
 void							ft_flag_convert(va_list *ap, char **tab, unsigned long long *x);
-void							ft_fill_precision(char **tab, int len);
+void							ft_fill_precision(char **tab, int len,
+		unsigned long long x);
 int								ft_ret(char **tab, int len);
 void							ft_fill_size_min(char **tab, int len);
 int								ft_cas_0(char *tab, unsigned long long x);
@@ -63,6 +64,6 @@ int								ft_nbrlen_base(long long nb, long long base);
 int								ft_unbrlen_base(unsigned long long nb, unsigned long long base);
 int								ft_double_len_left(long double x);
 void							ft_flag_convert_int(va_list *ap, char **tab, long long *x);
-int								ft_return_int(long long x, char *tab, int len, int count);
+int								ft_return_int(char *tab, int len, int count);
 
 #endif

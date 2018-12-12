@@ -6,7 +6,7 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 16:16:22 by alac              #+#    #+#             */
-/*   Updated: 2018/12/11 13:32:06 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/12 14:02:22 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int		ft_char(va_list *ap, char *tab)
 		ft_putchar(c);
 	while (tab[5] > 1)
 	{
-		ft_putchar(' ');
+		if (tab[3] == 0)
+			ft_putchar(' ');
+		else
+			ft_putchar('0');
 		tab[5]--;
 	}
 	if (tab[0] != 1)

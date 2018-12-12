@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:52:17 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/11 16:57:42 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/12 14:03:04 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,13 @@ int			ft_printf(const char *format, ...)
 			j -= i + 1;
 			while (head && !ft_strcmp_modif(&format[i], head->s))
 				head = head->next;
-			if (!head)
-				return (0);
-			j += (head->f)(&ap, tab);
-			i++;
+			if (head)
+			{
+				j += (head->f)(&ap, tab);
+				i++;
+			}
+			else
+				j++;
 		}
 		ft_bzero(tab, 8);
 		if (format[i] && format[i] != '%')
@@ -67,7 +70,7 @@ int			ft_printf(const char *format, ...)
 	va_end(ap);
 	return (i + j);
 }
-
+/*
 int		main()
 {
 	int i;
@@ -76,8 +79,8 @@ int		main()
 
 	i = 0;
 	j = 0;
-	i = ft_printf("% 5d\n", -42);
-	j = printf("% 5d\n", -42);
+	i = ft_printf("{%03c}\n", 0);
+	j = printf("{%03c}\n", 0);
 	printf("i :%d j :%d\n", i, j);
 	return (0);
-}
+}*/

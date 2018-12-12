@@ -6,7 +6,7 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 11:04:02 by alac              #+#    #+#             */
-/*   Updated: 2018/12/07 15:27:38 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/12 13:58:18 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static int		ft_size(long long x, char *tab)
 	int i;
 
 	i = 0;
-	if (tab[5] >= ft_nbrlen_base(x, 10))
+	if (tab[5] >= ft_nbrlen_base(x, 10) + 2)
 	{
-		while (i < (int)tab[5] - ft_nbrlen_base(x, 10) + 1)
+		while (i < (int)tab[5] - (ft_nbrlen_base(x, 10) + 2))
 		{
 			ft_putchar(' ');
 			i++;
@@ -59,7 +59,7 @@ int				ft_p_address(va_list *ap, char *tab)
 		ft_putstr("0x");
 		ft_putull_base_min((unsigned long long)x, 16);
 	}
-	if ((int)ft_nbrlen_base((long long)x, 10) > (int)tab[5] && (int)ft_nbrlen_base((long long)x, 10) > (int)tab[5])
-		return ((int)ft_nbrlen_base((long long)x, 10) - 1); 
+	if ((int)ft_nbrlen_base((long long)x, 10) > (int)tab[5])
+		return ((int)ft_nbrlen_base((long long)x, 16) + 2);	
 	return ((int)tab[5]);
 }
