@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:37:40 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/11 19:43:01 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/12 11:12:17 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ int				ft_unbrlen_base(unsigned long long nb, unsigned long long base)
 	unsigned long long i;
 	unsigned long long j;
 	unsigned long long x;
-   
-
+	
 	x = 1000000000000000000;
 	i = 1;
 	j = 0;
@@ -66,7 +65,7 @@ int				ft_nbrlen_base(long long nb, long long base)
 	return ((int)j);
 }
 
-int			ft_double_len_left(long double nb)
+int				ft_double_len_left(long double nb)
 {
 	long double		i;
 	int				j;

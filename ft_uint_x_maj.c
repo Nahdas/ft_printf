@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:31:36 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/07 19:58:33 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/12 10:49:54 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int			ft_unsigned_int_x_maj(va_list *ap, char *tab)
 	if (tab[2] == 1 && x != 0 && tab[3] != 1)
 		write(1, "0X", 2);
 	tab[2] = 0;
-	ft_fill_precision(&tab, len);
+	ft_fill_precision(&tab, len, x);
 	ft_putull_base(x , 16);
 	if (tab[0] == 1)
 	{

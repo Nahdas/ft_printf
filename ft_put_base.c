@@ -6,20 +6,20 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:51:46 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/07 17:03:12 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/12 11:22:59 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-char			*ft_create_base(int base, int b)
+char		*ft_create_base(int base, int b)
 {
-	char *bazz;
-	int i;
+	char	*bazz;
+	int		i;
 
 	i = 0;
-	if(!(bazz = (char *)malloc(sizeof(char) * base + 1)))
+	if (!(bazz = (char *)malloc(sizeof(char) * base + 1)))
 		return (NULL);
 	while (i < base)
 	{
@@ -35,47 +35,46 @@ char			*ft_create_base(int base, int b)
 	return (bazz);
 }
 
-
-void			ft_putull_base(unsigned long long nb, unsigned long long base)
+void		ft_putull_base(unsigned long long nb, unsigned long long base)
 {
 	char *bazz;
 
 	bazz = ft_create_base(base, 0);
 	if (nb < base)
-		write(1 , &(bazz[nb]), 1);
+		write(1, &(bazz[nb]), 1);
 	if (nb >= base)
 	{
 		ft_putull_base(nb / base, base);
-		write(1 , &(bazz[nb % base]), 1);
+		write(1, &(bazz[nb % base]), 1);
 	}
 	free(bazz);
 }
 
-void			ft_putull_base_min(unsigned long long nb, unsigned long long base)
+void		ft_putull_base_min(unsigned long long nb, unsigned long long base)
 {
 	char *bazz;
 
 	bazz = ft_create_base(base, 1);
 	if (nb < base)
-		write(1 , &(bazz[nb]), 1);
+		write(1, &(bazz[nb]), 1);
 	if (nb >= base)
 	{
 		ft_putull_base_min(nb / base, base);
-		write(1 , &(bazz[nb % base]), 1);
+		write(1, &(bazz[nb % base]), 1);
 	}
 	free(bazz);
 }
 
-void			ft_putll_base(long long nb, long long base)
+void		ft_putll_base(long long nb, long long base)
 {
 	char *bazz;
 
 	bazz = ft_create_base(base, 0);
 	if (nb < base && nb >= 0)
-		write (1, &bazz[nb], 1);
+		write(1, &bazz[nb], 1);
 	if (nb < 0)
 	{
-		write (1, "-", 1);
+		write(1, "-", 1);
 		ft_putll_base(-nb, base);
 	}
 	if (nb >= base)
