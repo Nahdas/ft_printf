@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 09:51:46 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/12 11:22:59 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/12 14:35:16 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void		ft_putll_base(long long nb, long long base)
 		write(1, &bazz[nb], 1);
 	if (nb < 0)
 	{
-		write(1, "-", 1);
-		ft_putll_base(-nb, base);
+		write (1, "-", 1);
+		ft_putull_base((unsigned long long)nb, base);
 	}
 	if (nb >= base)
 	{
