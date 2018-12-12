@@ -6,7 +6,7 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:17:30 by alac              #+#    #+#             */
-/*   Updated: 2018/12/11 20:51:24 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/12 12:02:41 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,13 @@ void		ft_flag_convert_int(va_list *ap, char **tab, long long	*x)
 		*x = va_arg(*ap, long);
 	if ((*tab)[7] == 4)
 		*x = va_arg(*ap, long long);
-	if ((*tab)[6] == -1)
-		(*tab)[6] = 0;
 }
 
+int			ft_return_int(long long x, char *tab, int len, int count)
+{
+	if (len > (int)tab[5] && len > (int)tab[6])
+		return (len + count);
+	if ((int)tab[5] >= len && (int)tab[5] > (int)tab[6])
+		return ((int)tab[5] + count);
+	return (count + (int)tab[6]);
+}

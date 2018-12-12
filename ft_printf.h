@@ -6,12 +6,9 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 15:37:10 by lmariott          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/12/11 20:19:48 by alac             ###   ########.fr       */
-=======
+/*   Updated: 2018/12/12 11:35:43 by alac             ###   ########.fr       */
 /*   Updated: 2018/12/11 19:59:28 by lmariott         ###   ########.fr       */
 /*   Updated: 2018/12/11 15:38:26 by alac             ###   ########.fr       */
->>>>>>> f0daf7ca900724eb521b1c4c0d891258b1b21c54
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +63,6 @@ int								ft_nbrlen_base(long long nb, long long base);
 int								ft_unbrlen_base(unsigned long long nb, unsigned long long base);
 int								ft_double_len_left(long double x);
 void							ft_flag_convert_int(va_list *ap, char **tab, long long *x);
+int								ft_return_int(long long x, char *tab, int len, int count);
 
 #endif
