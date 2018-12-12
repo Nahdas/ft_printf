@@ -6,7 +6,7 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 09:22:43 by alac              #+#    #+#             */
-/*   Updated: 2018/12/12 16:41:19 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/12 17:39:23 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int			ft_size_int(char *tab, int len, char *sign)
 
 	i = 0;
 	mem = tab[5];
-	if ((tab[1] == 1 || (*sign) == '-') && tab[5] > tab[6] && tab[5] > len && tab[6] != -1)
+	if ((tab[1] == 1 || (*sign) == '-') && tab[5] > tab[6] && tab[5] > len && tab[6] != -1 && tab[6] > len - 1)
 		tab[5]--;
 	if (tab[3] == 1 && tab[6] == -1 && i == 0 && (*sign) != 0) 
 	{
