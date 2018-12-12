@@ -6,19 +6,17 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 20:17:48 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/11 15:57:06 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/12 15:12:52 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_percent(va_list *ap, char *tab)
+int			ft_any(char c, char *tab)
 {
 	int			len;
 
 	len = 1;
-	if (!ap)
-		return (0);
 	if (tab[6] == -1)
 		tab[6] = 1;
 	if (tab[5] == 0)
@@ -30,7 +28,7 @@ int			ft_percent(va_list *ap, char *tab)
 		while (tab[5]--)
 			write(1, " ", 1);
 	}
-	write(1, "%", 1);
+	write(1, &c, 1);
 	if (tab[0] == 1)
 	{
 		while (tab[5]--)

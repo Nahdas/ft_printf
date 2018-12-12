@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 11:42:19 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/12 11:31:37 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/12 14:49:50 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int			ft_unsigned_int_o(va_list *ap, char *tab)
 	int					ret;
 
 	ft_flag_convert(ap, &tab, &x);
-	len = ft_nbrlen_base(x, 8);
+	len = ft_unbrlen_base(x, 8);
 	ret = ft_cas_0(tab, x);
 	if (ret != -1)
 	{

@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 15:37:10 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/12 13:08:51 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/12 15:08:13 by lmariott         ###   ########.fr       */
 /*   Updated: 2018/12/11 19:59:28 by lmariott         ###   ########.fr       */
 /*   Updated: 2018/12/11 15:38:26 by alac             ###   ########.fr       */
 /*                                                                            */
@@ -31,7 +31,7 @@ int								ft_unsigned_int_u(va_list *ap, char *tab);
 int								ft_unsigned_int_x_maj(va_list *ap, char *tab);
 int								ft_unsigned_int_x_min(va_list *ap, char *tab);
 int								ft_p_address(va_list *ap, char *tab);
-int								ft_percent(va_list *ap, char *tab);
+int								ft_any(char c, char *tab);
 int								ft_double_f(va_list *ap, char *tab);
 
 

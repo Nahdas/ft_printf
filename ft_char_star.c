@@ -6,90 +6,61 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 16:40:14 by alac              #+#    #+#             */
-/*   Updated: 2018/12/12 14:04:54 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/12 16:05:07 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int			ft_precision(char *s, char *tab)
+static void			ft_print_str(char *s, char *tab, int len)
 {
 	int i;
 
 	i = 0;
-	while ((int)tab[6] > i && s[i])
+	while (i < len&& tab[6])
 	{
 		ft_putchar(s[i]);
 		i++;
+		(tab[6])--;
 	}
-	if ((int)tab[6] == 0)
-		ft_putstr(s);
-	return (0);
 }
 
-static int			ft_size(char *s, char *tab)
+static void			ft_size(char *tab, int len)
 {
 	int i;
 
 	i = 0;
-	if (s[0] != '\0')
+	while (tab[5] - i > tab[6] || tab[5] - i > len)
 	{
-		while ((int)tab[5] > i + (int)ft_strlen(s) - (int)tab[6])
-		{
-			if (tab[3] == 0)
-				write(1, " ", 1);
-			if (tab[3] == 1)
-				write(1, "0", 1);
-			i++;
-		}
-		return (0);
-	}
-	while ((int)tab[5] > i + (int)ft_strlen(s))
-	{
-		write(1, " ", 1);
+		if (tab[3] == 0)
+			write(1, " ", 1);
+		if (tab[3] == 1)
+			write(1, "0", 1);
 		i++;
 	}
-	return (0);
 }
 
-static int			ft_pre_char(char *s, char *tab)
-{
-	int i;
-
-	i = 0;
-	if (tab[0] == 1)
-	{
-		ft_precision(s, tab);
-		return (-1);
-	}
-	return (0);
-}
-
-int		ft_char_star(va_list *ap, char *tab)
+int					ft_char_star(va_list *ap, char *tab)
 {
 	char	*s;
 	int		i;
+	int		len;
 
 	i = 0;
-	if (tab[6] == -1)
-		tab[6] = 0;
 	s = va_arg(*ap, char *);
 	if (!s)
 	{
 		ft_putstr("(null)");
 		return (6);
 	}
-	i = ft_pre_char(s, tab);
-	ft_size(s, tab);
-	if (i != -1)
-		ft_precision(s, tab);
+	len = ft_strlen(s);
+	if (tab[6] == -1)
+		tab[6] = len;
+	tab[7] = tab[6];
+	ft_size(tab, len);
+	ft_print_str(s, tab, len);
+	if (tab[7] < len)
+		return (tab[7] > tab[5] ? tab[7] : tab[5]);
 	else
-		i = 0;
-	if ((size_t)tab[5] >= ft_strlen(s))
-		return ((int)tab[5] + i);
-	if (tab[6] > 0)
-		return ((int)ft_strlen(s) - ((int)ft_strlen(s) - (int)tab[6]) + i);
-	if ((size_t)tab[5] < ft_strlen(s) && tab[6] == 0)
-		return ((int)ft_strlen(s));
-	return ((int)ft_strlen(s) + i);
+		return (len > tab[5] ? len : tab[5]);
 }
