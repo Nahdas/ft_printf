@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:04:02 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/11 16:09:37 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/12 10:50:19 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int			ft_unsigned_int_u(va_list *ap, char *tab)
 	len += (int)tab[2];
 	ret = ft_ret(&tab, len);
 	ft_fill_size_min(&tab, len);
-	ft_fill_precision(&tab,len);
+	ft_fill_precision(&tab, len, x);
 	ft_putull_base(x , 10);
 	if (tab[0] == 1)
 	{

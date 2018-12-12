@@ -6,7 +6,11 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 15:37:10 by lmariott          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/12/12 13:00:58 by alac             ###   ########.fr       */
+=======
+/*   Updated: 2018/12/12 13:08:51 by lmariott         ###   ########.fr       */
+>>>>>>> e958ba2ff6775892b03adeb22550b4830065bde5
 /*   Updated: 2018/12/11 19:59:28 by lmariott         ###   ########.fr       */
 /*   Updated: 2018/12/11 15:38:26 by alac             ###   ########.fr       */
 /*                                                                            */
@@ -36,7 +40,8 @@ int								ft_double_f(va_list *ap, char *tab);
 
 
 void							ft_flag_convert(va_list *ap, char **tab, unsigned long long *x);
-void							ft_fill_precision(char **tab, int len);
+void							ft_fill_precision(char **tab, int len,
+		unsigned long long x);
 int								ft_ret(char **tab, int len);
 void							ft_fill_size_min(char **tab, int len);
 int								ft_cas_0(char *tab, unsigned long long x);

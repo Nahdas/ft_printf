@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:59:09 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/11 19:58:21 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/12 10:54:57 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void		ft_fill_size_f(char **tab)
 		else
 			write(1, "0", 1);
 		((*tab)[5])--;
-	}	
+	}
 }
 
 void		ft_fill_precision_f(char **tab, long double x)
@@ -32,7 +32,7 @@ void		ft_fill_precision_f(char **tab, long double x)
 	if ((*tab)[6] != 0)
 	{
 		write(1, ".", 1);
-		while((*tab)[6] != 1)
+		while ((*tab)[6] != 1)
 		{
 			x *= 10;
 			ft_putnbr((int)x % 10);
@@ -47,12 +47,10 @@ void		ft_fill_precision_f(char **tab, long double x)
 	}
 }
 
-
 int			ft_double_f(va_list *ap, char *tab)
 {
 	long double			x;
 	int					len;
-	int					ret;
 	char				tmp2;
 
 	if (tab[6] == -1)

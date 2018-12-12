@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 18:48:42 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/11 15:31:50 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/12 12:56:56 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,18 @@ void		ft_flag_convert(va_list *ap, char **tab, unsigned long long *x)
 		*x = va_arg(*ap, unsigned long long);
 	else
 		*x = va_arg(*ap, unsigned int);
+	if ((*tab)[7] == 1)
+		*x = (unsigned short)(*x);
+	if ((*tab)[7] == 3)
+		*x = (unsigned char)(*x);
 	if ((*tab)[6] == -1)
 		(*tab)[6] = 1;
 }
 
-void		ft_fill_precision(char **tab, int len)
+void		ft_fill_precision(char **tab, int len, unsigned long long x)
 {
 	(*tab)[7] = (*tab)[6];
-	while (((*tab)[6] > len) || (*tab)[2] == 1)
+	while (((*tab)[6] > len) || ((*tab)[2] == 1 && x != 0))
 	{
 		(*tab)[2] = 0;
 		(*tab)[6]--;
