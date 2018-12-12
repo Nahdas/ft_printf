@@ -6,7 +6,7 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 09:22:43 by alac              #+#    #+#             */
-/*   Updated: 2018/12/12 14:29:52 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/12 16:41:19 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,12 @@
 static int			ft_size_int(char *tab, int len, char *sign)
 {
 	int i;
+	int mem;
 
 	i = 0;
+	mem = tab[5];
+	if ((tab[1] == 1 || (*sign) == '-') && tab[5] > tab[6] && tab[5] > len && tab[6] != -1)
+		tab[5]--;
 	if (tab[3] == 1 && tab[6] == -1 && i == 0 && (*sign) != 0) 
 	{
 		ft_putchar((*sign));
@@ -26,13 +30,14 @@ static int			ft_size_int(char *tab, int len, char *sign)
 	{
 		while (i < tab[5] - len && i < tab[5] - tab[6])
 		{
-			if (tab[3] == 1 && tab[0] != 1)
+			if (tab[3] == 1 && tab[0] != 1 && tab[6] == -1)
 				ft_putchar('0');
-			if (tab[3] != 1 || (tab[3] == 1 && tab[0] == 1))
+			if (tab[3] != 1 || (tab[3] == 1 && tab[0] == 1) || (tab[3] == 1 && tab[6] != -1))
 				ft_putchar(' ');
 			i++;
 		}
 	}
+	tab[5] = mem;
 	return (0);
 }
 
@@ -55,7 +60,7 @@ static int			ft_precision_int(long long x, char *tab, int len, char *sign)
 	return (0);
 }
 
-static int            ft_negative_int(char **tab, long long x, char *sign)
+static int            ft_negative_int(char **tab, long long x, char *sign, int *count)
 {
 	int len;
 	long long max = -9223372036854775807 - 1;
@@ -66,6 +71,8 @@ static int            ft_negative_int(char **tab, long long x, char *sign)
 		(*sign) = '-';
 		x = -x;
 		len = ft_nbrlen_base(x, 10) + 1;
+		if ((*tab)[6] > len && (*tab)[6] > (*tab)[5])
+			(*count)++;
 		if ((*tab)[0] == 1)
 		{
 			ft_precision_int(x, *tab, len, sign);
@@ -95,7 +102,10 @@ static int            ft_positive_int(char **tab, long long x, char *sign, int *
 		if ((*tab)[0] == 1)
 		{
 			ft_precision_int(x, *tab, (*len), sign);
-			ft_putll_base(x, 10);
+			if (x == 0 && tab[6] == 0)
+				ft_putchar(' ');
+			else if (x != 0 || (x == 0 && (*tab)[6] == -1))
+				ft_putll_base(x, 10);
 		}
 	}
 	return ((*len));
@@ -113,10 +123,10 @@ int				ft_int(va_list *ap, char *tab)
 	i = 0;
 	sign = 0;
 	count = 0;
-	if (tab[6] == 0 || !tab)
-		return (0);
 	ft_flag_convert_int(ap, &tab, &x);
-	len = ft_negative_int(&tab, (long long)x, &sign);
+	if (!tab)
+		return (0);
+	len = ft_negative_int(&tab, (long long)x, &sign, &count);
 	len = ft_positive_int(&tab, (long long)x, &sign, &count, &len);
 	if (x < 0)
 		x = -x;
@@ -124,7 +134,12 @@ int				ft_int(va_list *ap, char *tab)
 	if (tab[0] != 1)
 	{
 		ft_precision_int((long long)x, tab, len, &sign);
-		ft_putll_base(x, 10);
+		if (x == 0 && tab[6] == 0 && tab[5] >= 1)
+			ft_putchar(' ');
+		else if (x != 0 || (x == 0 && tab[6] != 0))
+			ft_putll_base(x, 10);
 	}
+	if ((int)tab[6] == 0 && tab[5] == 0 && x == 0)
+		return (0);
 	return (ft_return_int(tab, len, count));
 }
