@@ -6,7 +6,7 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 09:22:43 by alac              #+#    #+#             */
-/*   Updated: 2018/12/12 17:39:23 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/13 11:04:31 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ int				ft_int(va_list *ap, char *tab)
 		else if (x != 0 || (x == 0 && tab[6] != 0))
 			ft_putll_base(x, 10);
 	}
-	if ((int)tab[6] == 0 && tab[5] == 0 && x == 0)
-		return (0);
+		if ((int)tab[6] == 0 && tab[5] == 0 && x == 0)
+		return (0 + count);
 	return (ft_return_int(tab, len, count));
 }
