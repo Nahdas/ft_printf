@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:37:40 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/12 11:12:17 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/13 16:00:06 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int				ft_unbrlen_base(unsigned long long nb, unsigned long long base)
 	unsigned long long i;
 	unsigned long long j;
 	unsigned long long x;
-	
+
 	x = 1000000000000000000;
 	i = 1;
 	j = 0;

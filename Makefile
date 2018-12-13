@@ -6,7 +6,7 @@
 #    By: lmariott <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/26 11:49:47 by lmariott          #+#    #+#              #
-#    Updated: 2018/12/12 15:15:21 by lmariott         ###   ########.fr        #
+#    Updated: 2018/12/13 16:34:37 by lmariott         ###   ########.fr        #
 #    Updated: 2018/12/11 16:01:32 by alac             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -18,7 +18,6 @@ SRC = ft_printf.c\
 	  ft_list.c\
   	  ft_capture_the_flag.c\
 	  ft_put_base.c\
-	  ft_strcmp_modif.c\
 	  ft_uint_x_min.c\
 	  ft_uint_x_maj.c\
 	  ft_uint_u.c\
