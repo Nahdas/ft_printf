@@ -6,7 +6,7 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 09:22:43 by alac              #+#    #+#             */
-/*   Updated: 2018/12/13 11:04:31 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/13 14:29:46 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ static int			ft_size_int(char *tab, int len, char *sign)
 
 	i = 0;
 	mem = tab[5];
-	if ((tab[1] == 1 || (*sign) == '-') && tab[5] > tab[6] && tab[5] > len && tab[6] != -1 && tab[6] > len - 1)
+	if ((tab[1] == 1 || (*sign) == '-') && tab[5] > tab[6] && tab[5] > len
+			&& tab[6] != -1 && tab[6] > len - 1)
 		tab[5]--;
-	if (tab[3] == 1 && tab[6] == -1 && i == 0 && (*sign) != 0) 
+	if (tab[3] == 1 && tab[6] == -1 && i == 0 && (*sign) != 0)
 	{
 		ft_putchar((*sign));
 		(*sign) = 0;
@@ -32,7 +33,8 @@ static int			ft_size_int(char *tab, int len, char *sign)
 		{
 			if (tab[3] == 1 && tab[0] != 1 && tab[6] == -1)
 				ft_putchar('0');
-			if (tab[3] != 1 || (tab[3] == 1 && tab[0] == 1) || (tab[3] == 1 && tab[6] != -1))
+			if (tab[3] != 1 || (tab[3] == 1 && tab[0] == 1) ||
+				(tab[3] == 1 && tab[6] != -1))
 				ft_putchar(' ');
 			i++;
 		}
@@ -46,7 +48,8 @@ static int			ft_precision_int(long long x, char *tab, int len, char *sign)
 	int i;
 
 	i = 0;
-	if (((*sign) == '+' || (*sign) == '-') && (tab[6] != -1 || tab[3] != 1 || (tab[3] == 1 && tab[0] == 1 )))
+	if (((*sign) == '+' || (*sign) == '-') && (tab[6] != -1 || tab[3] != 1 ||
+				(tab[3] == 1 && tab[0] == 1 )))
 	{
 		ft_putchar(*sign);
 		(*sign) = 0;
@@ -60,7 +63,7 @@ static int			ft_precision_int(long long x, char *tab, int len, char *sign)
 	return (0);
 }
 
-static int            ft_negative_int(char **tab, long long x, char *sign, int *count)
+static int			ft_negative_int(char **tab, long long x, char *sign, int *count)
 {
 	int len;
 	long long max = -9223372036854775807 - 1;
@@ -84,7 +87,7 @@ static int            ft_negative_int(char **tab, long long x, char *sign, int *
 	return (len);
 }
 
-static int            ft_positive_int(char **tab, long long x, char *sign, int *count, int *len)
+static int			ft_positive_int(char **tab, long long x, char *sign, int *count, int *len)
 {
 	if (x >= 0)
 	{
@@ -111,7 +114,7 @@ static int            ft_positive_int(char **tab, long long x, char *sign, int *
 	return ((*len));
 }
 
-int				ft_int(va_list *ap, char *tab)
+int					ft_int(va_list *ap, char *tab)
 {
 	long long 	x;
 	int 		i;

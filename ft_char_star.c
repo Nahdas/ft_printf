@@ -6,7 +6,7 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 16:40:14 by alac              #+#    #+#             */
-/*   Updated: 2018/12/13 13:01:22 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/13 14:21:38 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ static int			ft_void(char *tab)
 	if (tab[0] == 0)
 		ft_size(tab, len);
 	if (tab[6] > -1)
-		write(1,"(null)", tab[6]);
+		write(1, "(null)", tab[6]);
 	else
-		write(1,"(null)", 6);
+		write(1, "(null)", 6);
 	if (tab[0] == 1)
 		ft_size(tab, len);
 	len = 6;
@@ -75,7 +75,7 @@ int					ft_char_star(va_list *ap, char *tab)
 	i = 0;
 	s = va_arg(*ap, char *);
 	if (!s)
-		return(ft_void(tab));
+		return (ft_void(tab));
 	len = ft_strlen(s);
 	if (tab[6] == -1)
 		tab[6] = len;
