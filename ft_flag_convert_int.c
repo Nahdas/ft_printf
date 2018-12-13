@@ -6,13 +6,13 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:17:30 by alac              #+#    #+#             */
-/*   Updated: 2018/12/12 16:41:23 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/13 14:20:50 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_flag_convert_int(va_list *ap, char **tab, long long	*x)
+void		ft_flag_convert_int(va_list *ap, char **tab, long long *x)
 {
 	if ((*tab)[7] == 0)
 		*x = va_arg(*ap, int);
