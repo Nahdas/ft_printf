@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 15:37:10 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/13 15:47:38 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/13 16:36:34 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,12 @@ int								ft_unbrlen_base(unsigned long long nb,
 int								ft_double_len_left(long double x);
 void							ft_flag_convert_int(va_list *ap,
 		char **tab, long long *x);
-int								ft_return_int(char *tab, int len, int count);
+int								ft_return_int(char *tab, int len, int count,
+		long long x);
+int								ft_len_int(char **tab, long long x);
+int								ft_not_minus(long long x, char *tab, int len,
+		char *sign);
+int								ft_precision_int(long long x, char *tab,
+		int len, char *sign);
 
 #endif
