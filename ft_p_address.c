@@ -6,7 +6,7 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 11:04:02 by alac              #+#    #+#             */
-/*   Updated: 2018/12/12 16:55:42 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/13 15:38:48 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,17 @@ static int		ft_preceding_char(char *tab, long long x)
 	return (0);
 }
 
+static void		ft_part_p(void *x, char *tab)
+{
+	ft_putstr("0x");
+	ft_precision(tab, (long long)x);
+	if (tab[6] != 0 || x != 0)
+		ft_putull_base_min((unsigned long long)x, 16);
+}
+
 int				ft_p_address(va_list *ap, char *tab)
 {
-	void 		*x;
+	void		*x;
 	int			i;
 	int			len;
 
@@ -66,16 +74,11 @@ int				ft_p_address(va_list *ap, char *tab)
 		tab[6] = 1;
 	tab[7] = tab[6] + 2;
 	x = va_arg(*ap, void *);
-	i = ft_preceding_char(tab,(long long)x);
+	i = ft_preceding_char(tab, (long long)x);
 	if (tab[3] != 1)
 		ft_size((long long)x, tab);
 	if (i != 1)
-	{
-		ft_putstr("0x");
-		ft_precision(tab, (long long)x);
-		if (tab[6] != 0 || x != 0)
-			ft_putull_base_min((unsigned long long)x, 16);
-	}
+		ft_part_p(x, tab);
 	if (tab[3] == 1)
 		ft_size((long long)x, tab);
 	len = ft_unbrlen_base((long long)x, 16) + 2;

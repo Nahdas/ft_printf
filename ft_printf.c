@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:52:17 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/12 17:21:02 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/13 15:56:11 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include <stdio.h>
 #include <limits.h>
 
-char		*ft_creat_tab(void)
+char			*ft_creat_tab(void)
 {
-	char *tab;
-	int i;
+	char	*tab;
+	int		i;
 
 	if (!(tab = (char *)malloc(sizeof(char) * 8)))
 		return (0);
@@ -27,49 +27,61 @@ char		*ft_creat_tab(void)
 	return (tab);
 }
 
-int			ft_printf(const char *format, ...)
+void			ft_init_part_printf(char **tab, int **var)
 {
-	va_list		ap;
-	char 		*tab;
-	t_list_f	*list;
-	t_list_f	*head;
-	int			i;
-	int			j;
+	*tab = ft_creat_tab();
+	if (!(*var = (int*)malloc(sizeof(int) * 2)))
+		return ;
+	(*var)[0] = -1;
+	(*var)[1] = 0;
+}
 
-	i = 0;
-	list = NULL;
-	head = NULL;
-	va_start(ap, format);
-	list = ft_make_list_f();
-	tab = ft_creat_tab();
-	j = 0;
-	if (!(head = (t_list_f*)malloc(sizeof(t_list_f))))
-		return (0);
-	while (format[i])
+int				ft_printf_part(const char *format, t_list_f *head,
+		t_list_f *list, va_list *ap)
+{
+	char		*tab;
+	int			*var;
+
+	ft_init_part_printf(&tab, &var);
+	while (format[++var[0]])
 	{
 		head = list;
-		if (format[i] == '%')
+		if (format[var[0]] == '%')
 		{
-			j += i;
-			i++;
-			if (format[i] == '\0')
-				return (i - 1);
-			i = ft_capture_the_flag(&tab, format, i);
-			j -= i + 1;
-			while (head && !ft_strcmp_modif(&format[i], head->s))
+			var[0] = ft_capture_the_flag(&tab, format, &var);
+			if (format[var[0]] == '\0')
+				return (var[0] + var[1] + 1);
+			while (head && head->c != format[var[0]])
 				head = head->next;
 			if (head)
-				j += (head->f)(&ap, tab);
+				var[1] += (head->f)(ap, tab);
 			else
-				j += ft_any(format[i], tab);
-			i++;
+				var[1] += ft_any(format[var[0]], tab);
 		}
-		ft_bzero(tab, 8);
-		if (format[i] && format[i] != '%')
-			write(1, &format[i++], 1);
+		else
+			write(1, &format[var[0]], 1);
 	}
+	ft_del_list_n_tab(list, &tab);
+	return (var[0] + var[1]);
+}
+
+int				ft_printf(const char *format, ...)
+{
+	va_list		ap;
+	t_list_f	*head;
+	t_list_f	*list;
+	int			ret;
+
+	va_start(ap, format);
+	list = NULL;
+	head = NULL;
+	list = ft_make_list_f();
+	if (!(head = (t_list_f*)malloc(sizeof(t_list_f))))
+		return (0);
+	ret = ft_printf_part(format, head, list, &ap);
 	va_end(ap);
-	return (i + j);
+	free(head);
+	return (ret);
 }
 /*
 int		main()
@@ -80,8 +92,8 @@ int		main()
 
 	i = 0;
 	j = 0;
-	i = ft_printf("Bonji%sour %", "ok");
-	j = printf("Bonji%sour %", "ok");
+	i = ft_printf("ok : %#u\n", 854775807);
+	j = printf("ok : %#u\n", 854775807);
 	printf("i :%d j :%d\n", i, j);
 	return (0);
 }*/

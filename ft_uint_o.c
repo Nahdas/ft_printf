@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 11:42:19 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/12 14:49:50 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/13 15:44:12 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static void	ft_part_o(char **tab, int *len, unsigned long long *x, int *ret)
 	ft_fill_precision(tab, *len, *x);
 	ft_putull_base(*x, 8);
 }
-
 
 int			ft_unsigned_int_o(va_list *ap, char *tab)
 {

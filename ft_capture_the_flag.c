@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 13:29:20 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/12 11:36:18 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/13 15:20:57 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,55 +37,25 @@ static int			ft_first_flag(char **tab, const char *format, int i)
 	return (i);
 }
 
-static int			ft_part_of_sec_flag(const char *format, char **tab, int i)
-{
-	if (format[i] > '9' || format[i] < '0')
-	{
-		(*tab)[6] = 0;
-		return (1);
-	}
-	return (0);
-}
-
 static int			ft_second_flag(char **tab, const char *format, int i)
 {
 	int		j;
 	int		b;
-	char	*nb;
 	char	s[1000];
 
 	j = 0;
 	b = 0;
 	ft_bzero(s, 1000);
-	while (format[i] == '.' ||
-			(format[i] >= '0' && format[i] <= '9'))
+	if (format[i] == '.')
 	{
-		if (format[i] == '.' && s[0] == 0)
-		{
-			i++;
-			b = 1;
-			if (ft_part_of_sec_flag(format, tab, i))
-				return (i);
-		}
-		if (format[i] == '.' && s[0] != '\0')
-		{
-			nb = ft_strdup(s);
-			(*tab)[5] = ft_atoi(nb);
-			ft_bzero(s, 1000);
-			j = 0;
-			i++;
-		}
-		if (ft_part_of_sec_flag(format, tab, i))
-			return (i);
-		s[j] = format[i];
+		b = 6;
 		i++;
-		j++;
 	}
-	nb = ft_strdup(s);
-	if (b == 1 || (*tab)[5] != 0)
-		(*tab)[6] = ft_atoi(nb);
 	else
-		(*tab)[5] = ft_atoi(nb);
+		b = 5;
+	while (format[i] >= '0' && format[i] <= '9')
+		s[j++] = format[i++];
+	(*tab)[b] = ft_atoi(s);
 	return (i);
 }
 
@@ -93,23 +63,23 @@ static int			ft_third_flag(char **tab, const char *format, int i)
 {
 	if (format[i] == 'h')
 	{
-		(*tab)[7]++;
+		(*tab)[7] = 1;
 		if (format[++i] == 'h')
 		{
 			(*tab)[7] = 3;
 			i++;
 		}
 	}
-	if (format[i] == 'l' && (*tab)[7] == 0)
+	if (format[i] == 'l')
 	{
-		(*tab)[7] += 2;
+		(*tab)[7] = 2;
 		if (format[++i] == 'l')
 		{
-			(*tab)[7] += 2;
+			(*tab)[7] = 4;
 			i++;
 		}
 	}
-	if (format[i] == 'L' && (*tab)[7] == 0)
+	if (format[i] == 'L')
 	{
 		(*tab)[7] = 5;
 		i++;
@@ -117,13 +87,38 @@ static int			ft_third_flag(char **tab, const char *format, int i)
 	return (i);
 }
 
-int					ft_capture_the_flag(char **tab, const char *format, int i)
+int					ft_is_flag(char c)
 {
+	if (c == '-' ||
+			c == '+' ||
+			c == '#' ||
+			c == '0' ||
+			c == ' ' ||
+			(c >= '0' && c <= '9') ||
+			c == '.' ||
+			c == 'h' ||
+			c == 'l' ||
+			c == 'L')
+		return (1);
+	return (0);
+}
+
+int					ft_capture_the_flag(char **tab, const char *format,
+		int **var)
+{
+	int i;
+
+	(*var)[1] += (*var)[0];
+	i = (*var)[0] + 1;
 	ft_bzero((*tab), 8);
 	(*tab)[6] = -1;
-	i = ft_first_flag(tab, format, i);
-	if (format[i] == '.' || (format[i] <= '9' && format[i] >= '0'))
-		i = ft_second_flag(tab, format, i);
-	i = ft_third_flag(tab, format, i);
+	while (ft_is_flag(format[i]) && format[i] != 'z' && format[i] != 'j')
+	{
+		i = ft_first_flag(tab, format, i);
+		if (format[i] == '.' || (format[i] <= '9' && format[i] >= '0'))
+			i = ft_second_flag(tab, format, i);
+		i = ft_third_flag(tab, format, i);
+	}
+	(*var)[1] -= i + 1;
 	return (i);
 }
