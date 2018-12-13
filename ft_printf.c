@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:52:17 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/13 16:38:29 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/13 17:23:30 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,42 +27,47 @@ char			*ft_creat_tab(void)
 	return (tab);
 }
 
-void			ft_init_part_printf(char **tab, int **var)
+void			ft_init_part_printf(char **tab, int *i, int *j)
 {
 	*tab = ft_creat_tab();
-	if (!(*var = (int*)malloc(sizeof(int) * 2)))
-		return ;
-	(*var)[0] = -1;
-	(*var)[1] = 0;
+	*i = -1;
+	*j = 0;
+}
+
+int				ft_ret_cas(int i, int j, t_list_f *list, char **tab)
+{
+	ft_del_list_n_tab(list, tab);
+	return (i + j + 1);
 }
 
 int				ft_printf_part(const char *format, t_list_f *head,
 		t_list_f *list, va_list *ap)
 {
 	char		*tab;
-	int			*var;
+	int			i;
+	int			j;
 
-	ft_init_part_printf(&tab, &var);
-	while (format[++var[0]])
+	ft_init_part_printf(&tab, &i, &j);
+	while (format[++i])
 	{
 		head = list;
-		if (format[var[0]] == '%')
+		if (format[i] == '%')
 		{
-			var[0] = ft_capture_the_flag(&tab, format, &var);
-			if (format[var[0]] == '\0')
-				return (var[0] + var[1] + 1);
-			while (head && head->c != format[var[0]])
+			i = ft_capture_the_flag(&tab, format, &i, &j);
+			if (format[i] == '\0')
+				return (ft_ret_cas(i, j, list, &tab));
+			while (head && head->c != format[i])
 				head = head->next;
 			if (head)
-				var[1] += (head->f)(ap, tab);
+				j += (head->f)(ap, tab);
 			else
-				var[1] += ft_any(format[var[0]], tab);
+				j += ft_any(format[i], tab);
 		}
 		else
-			write(1, &format[var[0]], 1);
+			write(1, &format[i], 1);
 	}
 	ft_del_list_n_tab(list, &tab);
-	return (var[0] + var[1]);
+	return (i + j);
 }
 
 int				ft_printf(const char *format, ...)
@@ -83,17 +88,3 @@ int				ft_printf(const char *format, ...)
 	free(head);
 	return (ret);
 }
-/*
-int		main()
-{
-	int i;
-	int j;
-
-
-	i = 0;
-	j = 0;
-	i = ft_printf("ok : %l#f\n", 42.42);
-	j = printf("ok : %l#f\n", 42.42);
-	printf("i :%d j :%d\n", i, j);
-	return (0);
-}*/

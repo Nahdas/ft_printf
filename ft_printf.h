@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 15:37:10 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/13 16:36:34 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/13 17:17:09 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int								ft_cas_0(char *tab, unsigned long long x);
 
 int								ft_strcmp_modif(const char *s1, const char *s2);
 int								ft_capture_the_flag(char **tab,
-		const char *format, int **var);
+		const char *format, int *k, int *j);
 void							ft_putull_base(unsigned long long nb,
 		unsigned long long base);
 void							ft_putll_base(long long nb, long long base);

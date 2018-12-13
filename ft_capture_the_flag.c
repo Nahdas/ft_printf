@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 13:29:20 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/13 15:20:57 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/13 17:16:52 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,12 @@ int					ft_is_flag(char c)
 }
 
 int					ft_capture_the_flag(char **tab, const char *format,
-		int **var)
+		int *k, int *j)
 {
 	int i;
 
-	(*var)[1] += (*var)[0];
-	i = (*var)[0] + 1;
+	*j += *k;
+	i = *k + 1;
 	ft_bzero((*tab), 8);
 	(*tab)[6] = -1;
 	while (ft_is_flag(format[i]) && format[i] != 'z' && format[i] != 'j')
@@ -119,6 +119,6 @@ int					ft_capture_the_flag(char **tab, const char *format,
 			i = ft_second_flag(tab, format, i);
 		i = ft_third_flag(tab, format, i);
 	}
-	(*var)[1] -= i + 1;
+	*j -= i + 1;
 	return (i);
 }
