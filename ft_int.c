@@ -6,19 +6,20 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 09:22:43 by alac              #+#    #+#             */
-/*   Updated: 2018/12/13 16:21:39 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/13 17:51:20 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		ft_size_int(char *tab, int len, char *sign)
+static int		ft_size_int(char *tab, int len, char *sign, long long x)
 {
 	int i;
 
 	i = 0;
-	if ((tab[1] == 1 || (*sign) == '-') && tab[5] > tab[6] && tab[5] > len
-			&& tab[6] != -1 && tab[6] > len - 1)
+	if (((tab[1] == 1 || (*sign) == '-') && tab[5] > tab[6] && tab[5] > len
+			&& tab[6] != -1 && tab[6] > len - 1) || (tab[4] == 1 && tab[1] != 1 && x >= 0 &&
+			(tab[5] <= tab[6] || tab[5] <= len || tab[6] == -1)))
 		i++;
 	if (tab[3] == 1 && tab[6] == -1 && i == 0 && (*sign) != 0)
 	{
@@ -95,10 +96,11 @@ static int		ft_positive_int(char **tab, long long x, char *sign, int *count)
 		if ((*tab)[1] == 1 && x >= 0)
 			*sign = '+';
 		if ((*tab)[4] == 1 && (*tab)[1] != 1 && x >= 0 &&
-			((*tab)[5] <= (*tab)[6] || (*tab)[5] <= len))
+			((*tab)[5] <= (*tab)[6] || (*tab)[5] <= len || (*tab)[6] == -1))
 		{
 			ft_putchar(' ');
-			(*count)++;
+			if ((*tab)[3] != 1)
+				(*count)++;
 		}
 		if ((*tab)[0] == 1)
 		{
@@ -131,7 +133,7 @@ int				ft_int(va_list *ap, char *tab)
 	len = ft_positive_int(&tab, (long long)x, &sign, &count);
 	if (x < 0)
 		x = -x;
-	ft_size_int(tab, len, &sign);
+	ft_size_int(tab, len, &sign, (long long)x);
 	if (tab[0] != 1)
 		ft_not_minus((long long)x, tab, len, &sign);
 	return (ft_return_int(tab, len, count, x));
