@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 15:37:40 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/13 16:00:06 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/13 17:43:36 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int				ft_unbrlen_base(unsigned long long nb, unsigned long long base)
 	x = 1000000000000000000;
 	i = 1;
 	j = 0;
-	if (nb == 0)
+	if (nb <= 9)
 		return (1);
 	if (nb >= x / base)
 	{

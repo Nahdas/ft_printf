@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:31:36 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/13 15:34:07 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/13 17:50:24 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void		ft_uixmin_part(char **tab, int *ret, int *len, unsigned long long x)
 {
 	if ((*tab)[2] == 1 && x != 0)
 	{
-		*len += 2;
+		(*tab)[5] -= (*tab)[2];
 		if ((*tab)[3] == 1)
 			write(1, "0x", 2);
 	}
