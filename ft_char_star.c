@@ -6,7 +6,7 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 16:40:14 by alac              #+#    #+#             */
-/*   Updated: 2018/12/12 17:29:29 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/13 12:48:08 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void			ft_print_str(char *s, char *tab, int len)
 	int i;
 
 	i = 0;
-	while (i < len&& tab[6])
+	while (i < len && tab[6])
 	{
 		ft_putchar(s[i]);
 		i++;
@@ -32,6 +32,10 @@ static void			ft_size(char *tab, int len)
 
 	i = 0;
 	tmp = (tab[6] > len ? len : tab[6]);
+	if (tmp == -6 && tab[6] != 0)
+		tmp = -tmp;
+	if (tmp == -6 && tab[6] == 0)
+		tmp = 0;
 	while (tab[5] - i > tmp)
 	{
 		if (tab[3] == 0)
@@ -40,6 +44,26 @@ static void			ft_size(char *tab, int len)
 			write(1, "0", 1);
 		i++;
 	}
+}
+
+static int			ft_void(char *tab)
+{
+	int len;
+
+	len = -6;
+	if (tab[0] == 0)
+		ft_size(tab, len);
+	if (tab[6] > -1)
+		write(1,"(null)", tab[6]);
+	else
+		write(1,"(null)", 6);
+	if (tab[0] == 1)
+		ft_size(tab, len);
+	len = 6;
+	if (tab[6] > -1)
+		return (tab[6] > tab[5] ? tab[6] : tab[5]);
+	else
+		return (len > tab[5] ? len : tab[5]);
 }
 
 int					ft_char_star(va_list *ap, char *tab)
@@ -51,10 +75,7 @@ int					ft_char_star(va_list *ap, char *tab)
 	i = 0;
 	s = va_arg(*ap, char *);
 	if (!s)
-	{
-		ft_putstr("(null)");
-		return (6);
-	}
+		return(ft_void(tab));
 	len = ft_strlen(s);
 	if (tab[6] == -1)
 		tab[6] = len;
