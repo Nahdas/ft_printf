@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 18:48:42 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/13 17:50:38 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/14 14:47:54 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ void		ft_fill_precision(char **tab, int len, unsigned long long x)
 
 int			ft_ret(char **tab, int len)
 {
-	if ((*tab)[5] > len && (*tab)[5] > (*tab)[6])
+	if ((*tab)[5] > len && (*tab)[5] >= (*tab)[6])
 		return ((int)(*tab)[5]);
-	else if ((*tab)[6] > len && (*tab)[6] > (*tab)[5])
+	else if ((*tab)[6] > len && (*tab)[6] >= (*tab)[5])
 		return ((int)(*tab)[6]);
 	else
 		return (len);

@@ -6,7 +6,7 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 09:22:43 by alac              #+#    #+#             */
-/*   Updated: 2018/12/13 17:51:20 by alac             ###   ########.fr       */
+/*   Updated: 2018/12/14 14:56:19 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static int		ft_size_int(char *tab, int len, char *sign, long long x)
 
 	i = 0;
 	if (((tab[1] == 1 || (*sign) == '-') && tab[5] > tab[6] && tab[5] > len
-			&& tab[6] != -1 && tab[6] > len - 1) || (tab[4] == 1 && tab[1] != 1 && x >= 0 &&
+			&& tab[6] != -1 && tab[6] > len - 1) ||
+			(tab[4] == 1 && tab[1] != 1 && x >= 0 &&
 			(tab[5] <= tab[6] || tab[5] <= len || tab[6] == -1)))
 		i++;
 	if (tab[3] == 1 && tab[6] == -1 && i == 0 && (*sign) != 0)
@@ -27,7 +28,6 @@ static int		ft_size_int(char *tab, int len, char *sign, long long x)
 		(*sign) = 0;
 	}
 	if (tab[5] > len && tab[5] > tab[6])
-	{
 		while (i < tab[5] - len && i < tab[5] - tab[6])
 		{
 			if (tab[3] == 1 && tab[0] != 1 && tab[6] == -1)
@@ -37,7 +37,6 @@ static int		ft_size_int(char *tab, int len, char *sign, long long x)
 				ft_putchar(' ');
 			i++;
 		}
-	}
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:52:17 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/13 17:51:20 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/14 14:54:51 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,14 +88,3 @@ int				ft_printf(const char *format, ...)
 	free(head);
 	return (ret);
 }
-/*
-int		main()
-{
-	int i;
-	int j;
-
-	i = ft_printf("{%#.5x}\n", 1);
-	j = printf("{%#.5x}\n", 1);
-	printf("i = %d, j = %d\n", i, j);
-	return (0);
-}*/

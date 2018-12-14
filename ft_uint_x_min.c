@@ -6,7 +6,7 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 10:31:36 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/13 17:50:24 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/14 14:36:24 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,18 @@ void		ft_uixmin_part(char **tab, int *ret, int *len, unsigned long long x)
 {
 	if ((*tab)[2] == 1 && x != 0)
 	{
-		(*tab)[5] -= (*tab)[2];
+		*len += 2;
+		(*tab)[6] += 2;
 		if ((*tab)[3] == 1)
 			write(1, "0x", 2);
 	}
 	*ret = ft_ret(tab, *len);
+	if ((*tab)[2] == 1 && x != 0)
+	{
+		*len -= 2;
+		(*tab)[5] -= 2;
+		(*tab)[6] -= 2;
+	}
 	ft_fill_size_min(tab, *len);
 	if ((*tab)[2] == 1 && x != 0 && (*tab)[3] != 1)
 		write(1, "0x", 2);
@@ -34,6 +41,8 @@ int			ft_unsigned_int_x_min(va_list *ap, char *tab)
 	int					len;
 	int					ret;
 
+	if (tab[6] != -1)
+		tab[3] = 0;
 	ft_flag_convert(ap, &tab, &x);
 	len = ft_unbrlen_base(x, 16);
 	tab[7] = tab[2];
