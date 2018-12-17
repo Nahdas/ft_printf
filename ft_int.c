@@ -6,7 +6,7 @@
 /*   By: alac <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 09:22:43 by alac              #+#    #+#             */
-/*   Updated: 2018/12/14 14:56:19 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/17 17:45:05 by alac             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int				ft_precision_int(long long x, char *tab, int len, char *sign)
 
 	i = 0;
 	if (((*sign) == '+' || (*sign) == '-') && (tab[6] != -1 || tab[3] != 1 ||
-		(tab[3] == 1 && tab[0] == 1)))
+		(tab[3] == 1 && tab[0] == 1) || (tab[3] == 1 && tab[4] == 1)))
 	{
 		ft_putchar(*sign);
 		(*sign) = 0;
@@ -98,8 +98,7 @@ static int		ft_positive_int(char **tab, long long x, char *sign, int *count)
 			((*tab)[5] <= (*tab)[6] || (*tab)[5] <= len || (*tab)[6] == -1))
 		{
 			ft_putchar(' ');
-			if ((*tab)[3] != 1)
-				(*count)++;
+			(*count)++;
 		}
 		if ((*tab)[0] == 1)
 		{

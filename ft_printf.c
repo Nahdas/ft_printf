@@ -6,13 +6,11 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/04 13:52:17 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/14 14:54:51 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/17 17:39:31 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-#include <limits.h>
 
 char			*ft_creat_tab(void)
 {
@@ -77,6 +75,8 @@ int				ft_printf(const char *format, ...)
 	t_list_f	*list;
 	int			ret;
 
+	if (!format)
+		return (0);
 	va_start(ap, format);
 	list = NULL;
 	head = NULL;

@@ -6,12 +6,11 @@
 /*   By: lmariott <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:59:09 by lmariott          #+#    #+#             */
-/*   Updated: 2018/12/13 16:10:16 by lmariott         ###   ########.fr       */
+/*   Updated: 2018/12/17 17:38:32 by lmariott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 void		ft_fill_size_f(char **tab)
 {

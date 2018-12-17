@@ -6,7 +6,7 @@
 #    By: lmariott <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 09:31:53 by lmariott          #+#    #+#              #
-#    Updated: 2018/12/07 13:34:17 by lmariott         ###   ########.fr        #
+#    Updated: 2018/12/17 16:12:14 by lmariott         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ OBJ = $(SRC:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJ)
+	cp $(OBJ) ../
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
@@ -42,6 +43,6 @@ fclean : clean
 	rm -f $(NAME)
 
 clean :
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(addprefix ../, $(OBJ))
 
 re : fclean all
